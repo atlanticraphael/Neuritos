@@ -1,0 +1,124 @@
+<!doctype html>
+<html ng-app="myCourse" ng-controller="CourseCrtl" lang="{{course.ui.language}}">
+<head>
+    <title>{{course.ui.title}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="inc/course.css" />
+    <link rel="stylesheet" type="text/css" href="inc/jquery.fancybox.css" />
+    <link rel="stylesheet" type="text/css" href="inc/jquery.jqplot.min.css" />
+    <link rel="stylesheet" type="text/css" href="inc/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="inc/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="inc/speech_bubble.css" />
+    <link rel="stylesheet" type="text/css" href="inc/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="inc/video-js.min.css" />
+    <link rel="stylesheet" type="text/css" href="inc/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="inc/patternbolt.css" />
+    <link rel="stylesheet" type="text/css" href="inc/templates.css" />
+	<link rel="stylesheet" type="text/css" href="inc/font/fonts.css" />
+    <script type="text/javascript" src="inc/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="inc/apiContentHtml.js"></script>
+	<script type="text/javascript" src="inc/apiContentScorm.js"></script>
+    <script type="text/javascript" src="inc/underscore-min.js"></script>
+    <script type="text/javascript" src="inc/ejs.js"></script>
+    <script type="text/javascript" src="inc/bootstrap.min.js"></script>
+    <script type="text/javascript" src="inc/angular.1.2.18.min.js"></script>
+    <script type="text/javascript" src="inc/angular-sanitize.1.2.18.min.js"></script>
+    <script type="text/javascript" src="inc/course-min.js"></script>
+    <script type="text/javascript" src="inc/jquery.noty.js"></script>
+    <script type="text/javascript" src="inc/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="inc/jquery.fancybox.pack.js"></script>
+    <!--[if lt IE 9]><script type="text/javascript" src="inc/excanvas.min.js"></script><![endif]-->
+    <script type="text/javascript" src="inc/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="inc/jqplot.pieRenderer.min.js"></script>
+    <script type="text/javascript" src="inc/swipe.js"></script>
+    <script type="text/javascript" src="inc/video.js"></script>
+    <script type="text/javascript" src="inc/vjs.youtube.js"></script>
+    <script type="text/javascript" src="inc/vjs.vimeo.js"></script>
+    <script type="text/javascript" src="inc/bindonce.min.js"></script>
+    <script type="text/javascript" src="inc/howler.min.js"></script>
+	<script type="text/javascript">
+		new APIContntScorm().startContentScorm_1_1();
+		var frameCode = null;
+        var templateCode = null;
+        var module = angular.module("myCourse", ['pasvaz.bindonce', 'ngSanitize']);
+        module.directive("injectFrame", function ($compile, $http) {
+            return {
+                scope: true,
+                restrict: "A",
+                link: function (scope, element, attrs) {
+                    $http.get("layouts/base.html").success(
+                        function (data, status) {
+                            var footer = $("#" + attrs.injectFrame, $(data));
+                            var el = $compile(footer.html())(scope);
+                            element.html("");
+                            element.append(el);
+                        });
+                }
+            };
+        });
+        module.directive("qlSrc",
+                function () {
+                    return {
+                        restrict: "A",
+                        scope: { qlOnload: "&", qlSrc: "=" },
+                        link: function (scope, elem, attrs) {
+                            var ElementOnLoad = function () { scope.qlOnload(); scope.$apply(); };
+                            elem.on("$destroy", function () { elem.off("load", ElementOnLoad); });
+                            elem.on("load", ElementOnLoad);
+                            elem.attr("src", scope.qlSrc);
+                        }
+                    }
+                });
+        module.directive("qlVisible",
+                function () {
+                    return {
+                        restrict: "A",
+                        scope: { qlVisible: "=" },
+                        link: function (scope, elem, attrs) {
+                            var watcher = scope.$watch("qlVisible", function (newValue) { elem.css("visibility", newValue ? "visible" : "hidden"); });
+                            elem.on("$destroy", function () { watcher(); });
+                        }
+                    }
+                });
+        module.filter("range", function () {
+            return function (input) {
+                var total = input[0];
+                var result = [];
+                for (var i = 0; i < total; i++) result.push(i);
+                return result;
+            };
+        });
+        function InitializeUIControl() {
+            $("#lockedTooltip").tooltip({
+                title: course.localization.GetMessage("137"),
+                placement: "left",
+                trigger: "manual"
+            });
+        }
+        var course = new Course();
+            course.on(COURSE_ENUM.EVENTS.ON_LOAD_COURSE_DATA, InitializeUIControl, null, this);
+
+        var CourseCrtl = function ($scope, $compile, $timeout, $location, $anchorScroll, $sce) {
+            $scope.isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone|ZuneWP7/i.test(navigator.userAgent));
+            $scope.Math = window.Math;
+            course.$sce = $sce;
+            course.$scope = $scope;
+            course.$compiler = $compile;
+            course.$timeout = $timeout;
+            course.$location = $location;
+            course.$anchorScroll = $anchorScroll;
+            course.LoadCourse("course.xml");
+            $scope.course = course;
+
+            $scope.GetScreenCSS = function () {
+                return $scope.course.ui.screenCSS;
+            }
+        };
+
+        window.onbeforeunload = function () {
+        	course.TerminateCourse();
+        };
+        $(window).resize(CourseAuxFunctions.HidePopover);
+    </script>
+</head>

@@ -1,0 +1,25 @@
+					</ul>
+				</div>
+				<div class="bb-custom-wrapper">
+					<div id="bb-bookblock" class="bb-bookblock">
+						<iframe id="iFrame" name="frameTarget" width="1000px" height="700px" style="border: 0px;"></iframe>
+					</div>
+					<div class="esconde">		
+						<nav>
+							<span id="bb-nav-prev"><a id="back" onclick="new APIContntScorm().back();" target="frameTarget" style="color:white;">&larr;</a></span>
+							<span id="bb-nav-next"><a id="next" onclick="new APIContntScorm().next();" target="frameTarget" style="color:white;">&rarr;</a></span>
+						</nav>
+						<span id="tblcontents" class="menu-button">Sumário</span>
+					</div>
+				</div>
+			</div>
+		</form>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/apiContentScorm.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			new APIContntScorm().startContentScorm();
+		});
+		</script>
+	</body>
+</html>

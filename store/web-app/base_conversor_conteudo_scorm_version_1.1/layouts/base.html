@@ -1,0 +1,172 @@
+﻿<div id="frame">
+    <div id="header">
+        <style type="text/css">
+			.frame-header {
+				border-bottom-style: solid;
+				border-bottom-width: 5px;
+				height: 60px;
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+
+                .frame-header .logo {
+                    max-width: 160px;
+                    max-height: 50px;
+                    height: auto;
+                }
+
+				.frame-header .full-align {
+					position: relative;
+					top: 50%;
+					-moz-transform: translateY(-50%);
+					-ms-transform: translateY(-50%);
+					-o-transform: translateY(-50%);
+					-webkit-transform: translateY(-50%);
+					transform: translateY(-50%);
+					text-align: center;
+				}
+
+				.frame-header .text-overflow {
+					overflow: hidden;
+					white-space: nowrap;
+					text-align: center;
+					-ms-text-overflow: ellipsis;
+					-o-text-overflow: ellipsis;
+					text-overflow: ellipsis;
+				}
+
+                .frame-header .btn-close {
+                    font-weight: bold;
+                    font-style: italic;
+                    font-size: 21px;
+                    margin-bottom: -5px;
+                    cursor: pointer;
+                }
+
+                .frame-header .pages {
+                    color: #fff;
+                    margin-right: 10px;
+                }
+        </style>
+        <div class="frame-header cor4-bg" ng-style="{borderBottomColor: course.style.GetColor('cor1').hex}">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 full-align" ng-show="course.ui.hasLogo">
+                <img ng-src="{{course.ui.logo}}" class="logo" />
+            </div>
+            <header class="full-align" tabindex="1" role="banner" aria-live="polite" ng-class="{ 'col-xs-9 col-sm-6 col-md-7 col-lg-8':course.ui.hasLogo, 'col-xs-12 col-sm-9 col-md-10 col-lg-10':!course.ui.hasLogo }">
+                <div class="pivtitulo0 text-overflow">{{course.ui.title1}}</div>
+                <div class="pivtitulo1 text-overflow">{{course.ui.title2}}</div>
+            </header>
+            <div class="col-sm-3 col-md-2 col-lg-2 pull-right text-right hidden-xs">
+                <svg width="40" height="35" class="btn-close" onclick="new APIContntScorm().comeBackForModuleScorm1_1();">
+                    <polygon points="10,0 40,0 40,30 0,20" style="fill:white;" />
+                    <text x="18" y="18" fill="black">X</text>
+                </svg>
+                <p class="pages">{{course.ui.pagination}}</p>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <style type="text/css">
+            .footer_base {
+                border-top: 5px solid;
+                height: 50px;
+            }
+
+                .footer_base .btn-link:hover, .footer_base .btn-link:focus {
+                    text-decoration: none;
+                    color: #FFF;
+                }
+
+                .footer_base .dropdown-menu {
+                    left: -55px;
+                }
+
+            .footer_controls_base {
+                padding-right: 50px;
+                margin-top: -35px;
+            }
+
+            .footer_controls_base_bts {
+                border: 5px solid;
+                border-radius: 50%;
+                padding: 15px;
+                color: #FFF;
+                font-size: 18px;
+            }
+
+			.flip_horizontal {
+				-moz-transform: scaleX(-1);
+				-webkit-transform: scaleX(-1);
+				-o-transform: scaleX(-1);
+				-ms-transform: scaleX(-1);
+				transform: scaleX(-1);
+				-ms-filter: fliph;
+				filter: fliph;
+			}
+
+            .footer_base_progress {
+                max-width: 50%;
+                margin: -20px 0 -8px 35px;
+            }
+
+                .footer_base_progress .progress {
+                    height: 35px;
+                    border: 5px solid;
+                    margin-bottom: 0;
+                }
+
+            .footer_base_progress_value {
+                color: #FFF;
+            }
+        </style>
+        <div class="footer_base" ng-style="{backgroundColor: course.style.GetColor('cor1').hex, borderTopColor: course.style.GetColor('cor4').hex}">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="footer_base_progress">
+                        <div class="progress" ng-style="{borderColor: course.style.GetColor('cor4').hex}">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{course.ui.paginationPercent}}" aria-valuemin="0" aria-valuemax="100" ng-style="{width: course.ui.paginationPercent + '%'}"></div>
+                        </div>
+                        <div class="footer_base_progress_value">
+                            <span class="pull-left">0%</span>
+                            <span class="pull-right">100%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="footer_controls_base pull-right role=" navigation">
+                        <div class="pull-left btn-group dropup" ng-show="course.ui.hasExtraFeatures" style="margin-right:5px">
+                            <button type="button" accesskey="m" aria-haspopup="true" class="btn btn-link dropdown-toggle glyphicon glyphicon-cog footer_controls_base_bts" data-toggle="dropdown" ng-style="{backgroundColor: course.style.GetColor('cor1').hex, borderColor: course.style.GetColor('cor4').hex}" ng-disabled="course.ui.disableExtraFeatures"></button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li ng-show="course.ui.faq != null" aria-hidden="{{course.ui.faq == null}}">
+                                    <a ng-click="course.ShowSpecialScreen('FAQ');" accesskey="f">
+                                        <span class="glyphicon glyphicon-question-sign"></span>&nbsp;{{course.ui.faq.label}}
+                                    </a>
+                                </li>
+                                <li ng-show="course.ui.glossary != null" aria-hidden="{{course.ui.glossary == null}}">
+                                    <a ng-click="course.ShowSpecialScreen('GLOSSARY');" accesskey="g">
+                                        <span class="glyphicon glyphicon-book"></span>&nbsp;{{course.ui.glossary.label}}
+                                    </a>
+                                </li>
+                                <li ng-show="course.ui.index != null" aria-hidden="{{course.ui.index == null}}">
+                                    <a ng-click="course.ShowSpecialScreen('INDEX');" accesskey="i">
+                                        <span class="glyphicon glyphicon-align-justify"></span>&nbsp;{{course.ui.index.label}}
+                                    </a>
+                                </li>
+                                <li ng-show="course.ui.attachments != null" aria-hidden="{{course.ui.attachments == null}}">
+                                    <a ng-click="course.ShowSpecialScreen('ATTACH');" accesskey="a">
+                                        <span class="glyphicon glyphicon-paperclip"></span>&nbsp;{{course.ui.attachments.label}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pull-right" ng-show="!isMobile">
+                            <button tabindex="3" type="button" class="btn btn-link glyphicon glyphicon-repeat footer_controls_base_bts" accesskey="r" ng-click="course.Reload();" ng-style="{backgroundColor: course.style.GetColor('cor1').hex, borderColor: course.style.GetColor('cor4').hex}"></button>
+                            <button tabindex="4" type="button" class="btn btn-link glyphicon glyphicon-play flip_horizontal footer_controls_base_bts" accesskey="p" ng-disabled="course.ui.isFirstScreen" ng-click="course.Prev();" ng-style="{backgroundColor: course.style.GetColor('cor1').hex, borderColor: course.style.GetColor('cor4').hex}"></button>
+                            <button tabindex="5" type="button" class="btn btn-link glyphicon glyphicon-play footer_controls_base_bts" accesskey="n" ng-disabled="course.ui.isLastScreen || course.currentScreen.isLocked" ng-click="course.Next();" ng-style="{backgroundColor: course.style.GetColor('cor1').hex, borderColor: course.style.GetColor('cor4').hex}"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
