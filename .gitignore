@@ -1,0 +1,10 @@
+lib/
+misc/
+plugins/
+store/.classpath
+store/.project
+store/.settings/
+store/target-eclipse/
+store/target/
+store/web-app/content/
+neuritos/

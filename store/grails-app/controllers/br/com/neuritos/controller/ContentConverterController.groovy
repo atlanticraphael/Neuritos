@@ -3,6 +3,7 @@ package br.com.neuritos.controller
 import grails.transaction.Transactional
 import br.com.neuritos.converter.domain.Content
 import br.com.neuritos.converter.domain.Conversion
+import br.com.neuritos.utils.ProjectPathConverter
 
 class ContentConverterController {
 
@@ -42,7 +43,7 @@ class ContentConverterController {
 		
 		String downloadFolder = contentConverterService.createDownloadFolder(webRootDir)
 		
-		String pathForExtract = ProjectPath.getOutputContentPath(webRootDir + '/content/', UUID)
+		String pathForExtract = ProjectPathConverter.getOutputContentPath(webRootDir + '/content/', UUID)
 		File newFile = new File(pathForExtract + '/' + fileName)
 		file.transferTo(newFile)
 
