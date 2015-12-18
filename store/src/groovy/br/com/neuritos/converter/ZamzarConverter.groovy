@@ -1,32 +1,15 @@
 package br.com.neuritos.converter
 
-import java.awt.Graphics2D
-import java.awt.image.BufferedImage
-import java.io.ByteArrayInputStream;
-import java.io.File;
-
-import javax.imageio.ImageIO;
-
-import java.awt.RenderingHints;
-import java.awt.AlphaComposite;
-
+import grails.converters.*
 import grails.plugins.rest.client.RestBuilder
 import grails.plugins.rest.client.RestResponse
-import grails.transaction.Transactional
-import groovyx.net.http.HttpURLClient
-
-import org.apache.http.client.HttpClient
-
 import groovyx.net.http.*
 
-import org.codehaus.groovy.grails.web.json.JSONElement;
-import org.codehaus.groovy.grails.web.json.JSONObject
-import org.codehaus.groovy.grails.io.support.FileSystemResource
+import java.awt.image.BufferedImage
 
-import com.google.gson.JsonElement;
+import org.codehaus.groovy.grails.web.json.JSONElement
 
-import br.com.neuritos.content.converter.ConversorConteudoConstantes;
-import grails.converters.*
+import br.com.neuritos.content.converter.ConversorConteudoConstantes
 
 class ZamzarConverter extends AbstractConverter {
 

@@ -24,10 +24,10 @@ class ContentConverterService {
 		
 		AbstractConverter abstractConverter = getConverterFactoryType(file, baseConvertFolder, UUID)
 		
-//		content.setPath(abstractConverter.convert(file, baseConvertFolder, destinationFolder, UUID))
-//		content.setContentType(abstractConverter.contentType)
-		
-		abstractConverter.convert(file, baseConvertFolder, destinationFolder, UUID)
+		content.setPath(abstractConverter.convert(file, baseConvertFolder, destinationFolder, UUID))
+		content.setContentType(ContentType.valueOf(abstractConverter.contentType.toString()))
+
+		content
 	}
 
 	def zipContent(String path, String fileName, String extractionFolder) {
