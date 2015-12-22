@@ -31,7 +31,7 @@
           <!-- Section Title -->
           <div class="section-title invert-colors no-margin-b">
             <h2>Quiz</h2>
-            <p>Crie sua quiz e distribua para sua turma.</p>
+            <p>Crie sua quiz e distribua para sua turma.ppp</p>
           </div>
           <!-- /Section Title -->
         </div>

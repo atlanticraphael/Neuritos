@@ -1,6 +1,6 @@
 <div class="tab-output">
 	<div class="form-group">
-		<label>Nome</label>
+		<label><g:message code="user.name.label"/></label>
 		<div class="input-group">
 			<div class="input-group-addon">
 				<i class="icon fa fa-file-text"></i>
@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label>Email</label>
+		<label><g:message code="user.email.label"/></label>
 		<div class="input-group">
 			<div class="input-group-addon">
 				<i class="icon fa fa-file-text"></i>
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label>Documento</label>
+		<label><g:message code="user.document.label"/></label>
 		<div class="input-group">
 			<div class="input-group-addon">
 				<i class="icon fa fa-file-text"></i>
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label>Telefone</label>
+		<label><g:message code="user.phone.label"/></label>
 		<div class="input-group">
 			<div class="input-group-addon">
 				<i class="icon fa fa-file-text"></i>

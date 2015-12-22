@@ -41,8 +41,8 @@
                       <!-- Content -->
                       <div class="text">
                       
-                        <h1 class="bx-layer" data-anim="bounceInDown" data-dur="1000" data-delay="100"><span class="pcolor">NEURITOS</span><br/>NEWSLETTER</h1>
-                        <p class="bx-layer" data-anim="bounceInLeft" data-dur="1000" data-delay="500">Increva-se para receber os lançamentos do sistema.</p>
+                        <h1 class="bx-layer" data-anim="bounceInDown" data-dur="1000" data-delay="100"><span class="pcolor"><g:message code="home.neuritos.label"/></span><br/><g:message code="home.newsletter.label"/></h1>
+                        <p class="bx-layer" data-anim="bounceInLeft" data-dur="1000" data-delay="500"><g:message code="home.signUp.label"/></p>
                         
                         <!-- Form -->
                         <div class="bx-layer intro-form clearfix" data-anim="bounceInLeft" data-dur="1000" data-delay="500">
@@ -169,7 +169,7 @@
           
           <!-- Section Title -->
           <div class="section-title">
-            <h2>Nossos serviços</h2>
+            <h2><g:message code="home.ourServices.label"/></h2>
             <p>We are experts in both desktop and mobile design.</p>
           </div>
           <!-- /Section Title -->

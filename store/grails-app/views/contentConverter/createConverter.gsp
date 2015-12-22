@@ -29,8 +29,8 @@
           <!-- Search Panel-->
           <div class="search-panel" id="searchPanel">
           
-            <h1><g:message code="domain.content.title.label"/></h1>
-            <p><g:message code="domain.content.description.label"/></p>
+            <h1><g:message code="content.title.label"/></h1>
+            <p><g:message code="content.description.label"/></p>
             
             <!-- Search Form -->
 					<div class="row filters-row grid-10">

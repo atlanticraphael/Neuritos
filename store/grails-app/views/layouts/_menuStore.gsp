@@ -52,7 +52,7 @@
 					</a>
 				</li>
 				<li class="dropdown mega">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">páginas<i class="fa fa-angle-down toggler"></i>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><g:message code="menu.pages.label"/><i class="fa fa-angle-down toggler"></i>
 					</a> <!-- Mega Menu -->
 					<div class="mega-menu dropdown-menu">
 						<!-- Row -->
@@ -68,9 +68,9 @@
 							<div class="col-md-4">
 								<h5>business</h5>
 								<ul class="links">
-									<li><a href="${createLink(uri: '/about')}">sobre</a></li>
-									<li><a href="${createLink(uri: '/services')}">serviços</a></li>
-									<li><a href="${createLink(uri: '/prices')}">planos</a></li>
+									<li><a href="${createLink(uri: '/about')}"><g:message code="menu.about.label"/></a></li>
+									<li><a href="${createLink(uri: '/services')}"><g:message code="menu.services.label"/></a></li>
+									<li><a href="${createLink(uri: '/prices')}"><g:message code="menu.prices.label"/></a></li>
 								</ul>
 							</div>
 							<!-- /col -->
@@ -97,11 +97,11 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Quiz<i class="fa fa-angle-down toggler"></i></a>
 						<ul class="dropdown-menu">
-							<li><a href="${createLink(uri: '/quiz')}">Criar Quiz</a></li>
-							<li><a href="${createLink(uri: '/team/create')}">Criar Turma</a></li>
-							<li><a href="${createLink(uri: '/user/createUserStore')}">Criar Usuário</a></li>
-							<li><a href="${createLink(uri: '/question/create')}">Criar Questão</a></li>
-							<li><a href="${createLink(uri: '/quiz/apply')}">Aplicar Quiz</a></li>
+							<li><a href="${createLink(uri: '/quiz')}"><g:message code="menu.createQuiz.label"/></a></li>
+							<li><a href="${createLink(uri: '/team/create')}"><g:message code="menu.createTeam.label"/></a></li>
+							<li><a href="${createLink(uri: '/user/createUserStore')}"><g:message code="menu.createUser.label"/></a></li>
+							<li><a href="${createLink(uri: '/question/create')}"><g:message code="menu.createQuestion.label"/></a></li>
+							<li><a href="${createLink(uri: '/quiz/apply')}"><g:message code="menu.applyQuiz.label"/></a></li>
 						</ul>
 					</li>
 					<li class="no-line">

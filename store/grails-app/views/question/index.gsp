@@ -81,8 +81,8 @@
 										${quiz.listQuiz.size()}
 								</span></td>
 								<td>
-									<button class="btn btn-primary btn-sm" type="submit">Edit</button>
-									<button class="btn btn-primary btn-sm" type="submit">remove</button>
+									<button class="btn btn-primary btn-sm" type="submit"><g:message code="default.button.edit.label"/></button>
+									<button class="btn btn-primary btn-sm" type="submit"><g:message code="default.button.delete.label"/></button>
 								</td>
 							</tr>
 						</g:each>

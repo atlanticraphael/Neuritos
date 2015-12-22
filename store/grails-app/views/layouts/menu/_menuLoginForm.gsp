@@ -3,7 +3,7 @@
 
 		<sec:ifLoggedIn>
 			${session['username']}, <g:link class="logout" controller="logout">
-				<span class="nav-label"><g:message code="logout.label" /></span>
+				<span class="nav-label"><g:message code="menu.logout.label" /></span>
 			</g:link>
 		</sec:ifLoggedIn>
 		
