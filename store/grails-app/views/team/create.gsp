@@ -37,6 +37,7 @@
 										placeholder="${message(code: 'team.placeholder.name.label')}">
 								</div>
 							</div>
+							<hr />
 							<div class="form-group">
 								<button class="btn btn-primary pull-right"><g:message code="default.button.create.label"/></button>
 							</div>
@@ -62,7 +63,7 @@
 								<td><span class="val"><g:formatDate date="${team?.creationDate}" format="dd/MM/yyyy"/></span></td>
 								<td><span class="val">${team?.teamUser?.size()}</span></td>
 								<td>
-									<button class="btn btn-primary btn-sm" onclick="allocateUsers(${team?.id })"><g:message code="default.button.manageUsers.label"/></button>
+									<button class="btn btn-primary btn-sm" onclick="allocateUsers(${team?.id })"><i class="fa fa-group"></i>&nbsp;<g:message code="default.button.manageUsers.label"/></button>
 								</td>
 							</tr>
 						</g:each>

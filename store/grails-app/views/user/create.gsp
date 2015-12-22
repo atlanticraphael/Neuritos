@@ -9,7 +9,6 @@
       		<div class="vcenter">
         		<div class="vcenter-this">
           			<div class="container">
-            <!-- Form Panel -->
             			<div class="form-panel width-40pc width-100pc-xs hcenter">
               				<header><g:message code="login.signUp.label"/></header>
               				<fieldset>
@@ -17,13 +16,13 @@
 					            	<div class="form-group">
 					                	<div class="input-group">
 					                    	<div class="input-group-addon"><i class="fa fa-user"></i></div>
-					                    	<input type="text" class="form-control" placeholder="${message(code: 'user.fullNames.label')}" name="name">
+					                    	<input type="text" class="form-control" placeholder="${message(code: 'user.fullName.label')}" name="name">
 					                  	</div>
 					                </div>
 					                <div class="form-group">
 					                	<div class="input-group">
 					                   		<div class="input-group-addon"><i class="fa fa-user"></i></div>
-					                   		<input type="email" class="form-control" placeholder="${message(code: 'user.emailAddress.label')}" name="username">
+					                   		<input type="email" class="form-control" placeholder="${message(code: 'user.email.label')}" name="username">
 					                	</div>
 					                </div>
 					                <div class="form-group">
@@ -35,11 +34,11 @@
 					                <div class="form-group">
 					                	<div class="input-group">
 					                    	<div class="input-group-addon"><i class="fa fa-lock"></i></div>
-					                    	<input type="password" class="form-control" placeholder="${message(code: 'user.ConfirmPassword.label')}">
+					                    	<input type="password" class="form-control" placeholder="${message(code: 'user.confirmPassword.label')}">
 					                  	</div>
 					               	</div>
 		                			<div class="form-group">
-	                  					<label class="checkbox-inline"><input type="checkbox" required="" value=""><g:message code="user.agree.label"/>&nbsp;<a class="href"><g:message code="user.term.title.label"/></a> <g:message code="user.termofUse.label"/></label>
+	                  					<label class="checkbox-inline"><input type="checkbox" required="" value=""><g:message code="user.agree.label"/>&nbsp;<a class="href"><g:message code="user.termOfUse.begin.label"/></a>&nbsp;<g:message code="user.termOfUse.end.label"/></label>
 	                				</div>
 	                				<button class="btn btn-primary btn-lg btn-block"><g:message code="login.createAccount.label"/></button>
 	              				</g:form>

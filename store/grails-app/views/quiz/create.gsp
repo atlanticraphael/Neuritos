@@ -33,7 +33,7 @@
 										<div class="input-group-addon">
 											<i class="icon fa fa-user"></i>
 										</div>
-										<input type="text" class="form-control" name="name"
+										<input type="text" class="form-control" name="name" required="required"
 											placeholder="${message(code: 'quiz.placeholder.name.label')}">
 									</div>
 								</div>

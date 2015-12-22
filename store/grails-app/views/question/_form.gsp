@@ -33,7 +33,7 @@
 		<hr />
 		<div class="form-group">
 			<div class="input-group w-100pc">
-				<button class="btn btn-primary" type="submit"><g:message code="default.button.create.label"/></button>
+				<button class="btn btn-primary pull-right" type="submit"><g:message code="default.button.create.label"/></button>
 			</div>
 		</div>
 	</div>
