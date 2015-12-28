@@ -85,5 +85,38 @@ class ContentConverterController {
 		neuritosFile.withInputStream { response.outputStream << it }
 	}
 
+	def delete(Long id) {
+		Content content = Content.get(id)
+
+		Conversion conversion = Conversion.findByContent(content)
+		conversion.delete flush:true
+		content.delete flush:true
+						
+		redirect action: 'createConverter'
+	}
 	
+	def downloadFile(Long id) {
+		Content content = Content.get(id)
+		
+		String fileName = content?.name
+		Integer UUID_total_characters = 36
+		
+		String UUID = content?.path?.substring(content?.path?.size() - UUID_total_characters, content?.path?.size())
+		String webRootDir = servletContext.getRealPath("/")
+
+		String fileNameWithoutExtension = fileName.toString().substring(0, fileName.toString().toLowerCase().lastIndexOf("."))
+		String destinationFolder = webRootDir + 'content/conversor/' + UUID
+		String downloadFolder = contentConverterService.createDownloadFolder(webRootDir)
+		File neuritosFile = null
+		if (fileName.toString().toLowerCase().endsWith(".mp4")) {
+			contentConverterService.downloadVideoFromS3(UUID, destinationFolder)
+			neuritosFile = contentConverterService.zipContent(destinationFolder, fileNameWithoutExtension, downloadFolder)
+		} else {
+			neuritosFile = new File (webRootDir + '/content/downloads/' + fileNameWithoutExtension + '.ne')
+		}
+		
+		response.setContentType("application/octet-stream")
+		response.setHeader("Content-disposition", "filename=${neuritosFile.name}")
+		neuritosFile.withInputStream { response.outputStream << it }
+	}
 }
