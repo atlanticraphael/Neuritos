@@ -1,145 +1,69 @@
-<nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
-	<div class="navbar-header">
-		<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
-			href="#"><i class="fa fa-bars"></i> </a>
-		<!--  	
-		<form role="search" class="navbar-form-custom" method="post"
-			action="search_results.html">
-			<div class="form-group">
-				<input type="text" placeholder="Search for something..."
-					class="form-control" name="top-search" id="top-search"
-					style="margin-bottom: 0px;">
-			</div>
-		</form>
-		-->	
+<sec:ifLoggedIn>
+	<div class="btn-wrapper navbar-el dropdown  navbar-left">
+		<ul class="nav navbar-top-links navbar-right">	
+			<li class="btn-group">
+				<button class="btn btn-default" type="button" data-toggle="dropdown" aria-expanded="false"
+					style="border:0px;background-color: #FFF;color: #000;">
+					<g:message code="menu.choose.language.label"/>&nbsp;<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><g:link controller="header" action="trocarIdiomaSistema" params="[idioma:'pt_br']" style="padding: 3px 5px;">
+							<i class="fa fa-check" data-value="pt_br" style="display: none;"></i>&nbsp;
+		          			<asset:image src="idiomas/icone_language_pt_br.jpg" width="24px" heigth="24px"/>&nbsp;
+		          			<g:message code="menu.choose.language.portuguese.label"/>
+		          		</g:link>
+		          	</li>
+		          	<li>
+		          		<g:link controller="header" action="trocarIdiomaSistema"  params="[idioma:'en']" style="padding: 3px 5px;">
+		          			<i class="fa fa-check" data-value="en" style="display: none;"></i>&nbsp;
+		          			<asset:image src="idiomas/icone_language_usa.png" width="24px" heigth="24px"/>&nbsp;
+		          			<g:message code="menu.choose.language.english.label"/>
+		          		</g:link>
+		          	</li>
+					<li>
+						<g:link controller="header" action="trocarIdiomaSistema"  params="[idioma:'es']" style="padding: 3px 5px;">
+							<i class="fa fa-check" data-value="es" style="display: none;"></i>&nbsp;
+							<asset:image src="idiomas/icone_language_es.jpg" width="24px" heigth="24px"/>&nbsp;
+							<g:message code="menu.choose.language.spanish.label"/>
+						</g:link>
+					</li>
+		        </ul>
+			</li>
+		</ul>
 	</div>
-	<ul class="nav navbar-top-links navbar-right">
-		<li class="btn-group">
-			<button class="btn btn-default" type="button" data-toggle="dropdown" aria-expanded="false"
-				style="border:0px;background-color: #FFF;color: #000;">
-				<g:message code="menu.escolha.idioma.label"/>&nbsp;<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li><g:link controller="language" action="changeSystemLanguage" params="[idioma:'pt_br']" style="padding: 3px 5px;">
-						<i class="fa fa-check" data-value="pt_br" style="display: none;"></i>&nbsp;
-	          			<asset:image src="idiomas/icone_language_pt_br.jpg" width="24px" heigth="24px"/>&nbsp;
-	          			<g:message code="menu.escolha.idioma.portugues.label"/>
-	          		</g:link>
-	          	</li>
-	          	<li>
-	          		<g:link controller="language" action="changeSystemLanguage"  params="[idioma:'en']" style="padding: 3px 5px;">
-	          			<i class="fa fa-check" data-value="en" style="display: none;"></i>&nbsp;
-	          			<asset:image src="idiomas/icone_language_usa.png" width="24px" heigth="24px"/>&nbsp;
-	          			<g:message code="menu.escolha.idioma.ingles.label"/>
-	          		</g:link>
-	          	</li>
-				<li>
-					<g:link controller="language" action="changeSystemLanguage"  params="[idioma:'es']" style="padding: 3px 5px;">
-						<i class="fa fa-check" data-value="es" style="display: none;"></i>&nbsp;
-						<asset:image src="idiomas/icone_language_es.jpg" width="24px" heigth="24px"/>&nbsp;
-						<g:message code="menu.escolha.idioma.espanhol.label"/>
-					</g:link>
-				</li>
-	        </ul>
-		</li>
-		<!--  
-		<li class="dropdown"><a class="dropdown-toggle count-info"
-			data-toggle="dropdown" href="#"> <i class="fa fa-envelope"></i> <span
-				class="label label-warning">16</span>
-		</a>
-			<ul class="dropdown-menu dropdown-messages">
-				<li>
-					<div class="dropdown-messages-box">
-						<a href="profile.html" class="pull-left"> <asset:image
-								alt="image" class="img-circle" src="a7.jpg" />
+</sec:ifLoggedIn>
+<sec:ifNotLoggedIn>
+	<div class="btn-wrapper navbar-el dropdown  navbar-left">
+		<ul class="nav navbar-top-links navbar-right">	
+			<li class="btn-group">
+				<button class="btn btn-default" type="button" data-toggle="dropdown" aria-expanded="false"
+					style="border:0px;background-color: #FFF;color: #000;">
+					<g:message code="menu.choose.language.label"/>&nbsp;<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+		          	<li>
+		          		<a href="?lang=pt_br">
+							<i class="fa fa-check" data-value="pt_br" style="display: none;"></i>&nbsp;
+		          			<asset:image src="idiomas/icone_language_pt_br.jpg" width="24px" heigth="24px"/>&nbsp;
+		          			<g:message code="menu.choose.language.portuguese.label"/>
+		          		</a>
+		          	</li>
+		          	<li>
+		          		<a href="?lang=en">
+		          			<i class="fa fa-check" data-value="en" style="display: none;"></i>&nbsp;
+		          			<asset:image src="idiomas/icone_language_usa.png" width="24px" heigth="24px"/>&nbsp;
+		          			<g:message code="menu.choose.language.english.label"/>
+		          		</a>
+		          	</li>
+		          	<li>
+						<a href="?lang=es">
+							<i class="fa fa-check" data-value="es" style="display: none;"></i>&nbsp;
+							<asset:image src="idiomas/icone_language_es.jpg" width="24px" heigth="24px"/>&nbsp;
+							<g:message code="menu.choose.language.spanish.label"/>
 						</a>
-						<div class="media-body">
-							<small class="pull-right">46h ago</small> <strong>Mike
-								Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
-							<small class="text-muted">3 days ago at 7:58 pm -
-								10.06.2014</small>
-						</div>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<div class="dropdown-messages-box">
-						<a href="profile.html" class="pull-left"> <asset:image
-								alt="image" class="img-circle" src="a4.jpg" />
-						</a>
-						<div class="media-body ">
-							<small class="pull-right text-navy">5h ago</small> <strong>Chris
-								Johnatan Overtunk</strong> started following <strong>Monica
-								Smith</strong>. <br> <small class="text-muted">Yesterday
-								1:21 pm - 11.06.2014</small>
-						</div>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<div class="dropdown-messages-box">
-						<a href="profile.html" class="pull-left"> <asset:image
-								alt="image" class="img-circle" src="profile.jpg" />
-						</a>
-						<div class="media-body ">
-							<small class="pull-right">23h ago</small> <strong>Monica
-								Smith</strong> love <strong>Kim Smith</strong>. <br> <small
-								class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
-						</div>
-					</div>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<div class="text-center link-block">
-						<a href="mailbox.html"> <i class="fa fa-envelope"></i> <strong>Read
-								All Messages</strong>
-						</a>
-					</div>
-				</li>
-			</ul>
-		</li>
-		<li class="dropdown"><a class="dropdown-toggle count-info"
-			data-toggle="dropdown" href="#"> <i class="fa fa-bell"></i> <span
-				class="label label-primary">8</span>
-			
-		</a>
-			<ul class="dropdown-menu dropdown-alerts">
-				<li><a href="mailbox.html">
-						<div>
-							<i class="fa fa-envelope fa-fw"></i> You have 16 messages <span
-								class="pull-right text-muted small">4 minutes ago</span>
-						</div>
-				</a></li>
-				<li class="divider"></li>
-				<li><a href="profile.html">
-						<div>
-							<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-								class="pull-right text-muted small">12 minutes ago</span>
-						</div>
-				</a></li>
-				<li class="divider"></li>
-				<li><a href="grid_options.html">
-						<div>
-							<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
-								class="pull-right text-muted small">4 minutes ago</span>
-						</div>
-				</a></li>
-				<li class="divider"></li>
-				<li>
-					<div class="text-center link-block">
-						<a href="notifications.html"> <strong>See All Alerts</strong>
-							<i class="fa fa-angle-right"></i>
-						</a>
-					</div>
-				</li>
-			</ul></li>
--->	
-
-		<li>
-			<g:link class="logout" controller="logout">
-				<i class="fa fa-sign-out"></i>
-				${message(code: 'logout.label')}
-			</g:link>
-		</li>
-	</ul>
-</nav>
+					</li>
+		        </ul>
+			</li>
+		</ul>
+	</div>
+</sec:ifNotLoggedIn>
