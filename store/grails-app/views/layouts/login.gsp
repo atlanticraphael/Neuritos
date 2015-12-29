@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><g:layoutTitle default="Grails"/></title>
-    <script type="text/javascript"> var idioma = '${session['idioma']}'; </script>
+    <script type="text/javascript"> var language = '${session['language']}'; </script>
     <asset:stylesheet href="bootstrap.min.css" rel="stylesheet" />
     <asset:stylesheet href="font-awesome/css/font-awesome.css" rel="stylesheet" />
     <!-- Morris -->
