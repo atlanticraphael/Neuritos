@@ -10,7 +10,7 @@
         		<div class="vcenter-this">
           			<div class="container">
             			<div class="form-panel width-33pc width-100pc-xs hcenter">
-              				<header><g:message code="login.acess.label"/></header>
+              				<header><g:message code="login.access.label"/></header>
               				<fieldset>
 								<form action='${postUrl}' method='POST' id="loginForm" name="loginForm" autocomplete='off'>
 					                <div class="form-group">
