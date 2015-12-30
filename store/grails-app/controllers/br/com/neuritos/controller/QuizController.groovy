@@ -1,14 +1,11 @@
 package br.com.neuritos.controller
 
-import br.com.neuritos.converter.domain.Account
-import br.com.neuritos.converter.domain.Choice;
-import br.com.neuritos.converter.domain.Question;
-import br.com.neuritos.converter.domain.QuestionQuiz;
+import grails.transaction.Transactional
+import br.com.neuritos.converter.domain.Question
+import br.com.neuritos.converter.domain.QuestionQuiz
 import br.com.neuritos.converter.domain.Quiz
 import br.com.neuritos.converter.domain.Team
-import br.com.neuritos.converter.domain.TeamQuiz;
-import br.com.neuritos.converter.domain.User
-import grails.transaction.Transactional
+import br.com.neuritos.converter.domain.TeamQuiz
 
 class QuizController {
 
@@ -42,6 +39,20 @@ class QuizController {
 		redirect action:'allocateQuestions', id:quizInstance.id as Long
 	}
 	
+	
+	def edit(Quiz quizInstance) {
+		println 'Editando'
+		
+		respond quizInstance
+	}
+
+	@Transactional
+	def update(Quiz quizInstance) {
+		if (quizInstance == null) {
+			notFound()
+			return
+		}
+	}
 	
 	def show(Long id) {
 		respond Quiz.get(id)

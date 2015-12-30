@@ -24,7 +24,7 @@
 							<h3><g:message code="default.create.domain.label" args="[entityName]"/></h3>
 							<g:form controller="quiz" action="save" role="form">
 								<div class="form-group">
-									<label><g:message code="quiz.name.label"/></label>
+									<label for="name"><g:message code="quiz.name.label"/></label>
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="icon fa fa-user"></i>
@@ -61,7 +61,7 @@
 											<td style="text-align: center;"><span class="val">${quiz?.listQuestionQuiz?.size()}</span></td>
 											<td style="text-align: center;"><span class="val">${quiz?.listTeamQuiz?.size()}</span></td>
 											<td style="text-align: center;">
-												<g:link action="allocateQuestions" params="[id:quiz?.id]">
+												<g:link action="edit" params="[id:quiz?.id]">
 													<button class="btn btn-primary" type="submit" title="${message(code: 'default.tooltip.edit.label')}"><i class="icon-center fa fa-edit"></i></button>
 												</g:link>
 												<g:link action="delete" params="[id:quiz?.id]">
