@@ -60,14 +60,14 @@
 							</span>
 						</td>
 						<td style="text-align: center;">
-							<button class="btn btn-primary" type="button" onclick="allocateQuestion(${question?.id}, ${quiz?.id})"><i class="fa fa-cog"></i>&nbsp;<g:message code="default.button.add.label"/></button>
+							<button class="btn btn-primary pull-right" type="button" onclick="allocateQuestion(${question?.id}, ${quiz?.id})"><i class="fa fa-cog"></i>&nbsp;<g:message code="default.button.add.label"/></button>
 						</td>
 					</tr>
 				</g:each>
 			</table>
 		</g:if>
 		<g:else>
-			<div class="alert alert-danger ukb-error" style="display: block;">
+			<div class="alert alert-danger ukb-warning" style="display: block;">
 				<g:message code="quiz.list.availableQuestions.empty.message"/>
 			</div>
 		</g:else>
