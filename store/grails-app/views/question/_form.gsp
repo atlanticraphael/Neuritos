@@ -4,7 +4,7 @@
 		<div class="input-group-addon">
 			<i class="icon fa fa-file-text"></i>
 		</div>
-		<textarea rows="3" class="form-control" name="header" required="required">${question?.header}</textarea>
+		<textarea rows="3" class="form-control" name="header" required="required">${questionInstance?.header}</textarea>
 	</div>
 </div>
 <div class="form-group">
@@ -13,9 +13,9 @@
 		<div class="input-group-addon">
 			<i class="icon fa fa-user"></i>
 		</div>
-		<input type="number" class="form-control" id="optionsQuantity" name="optionsQuantity" value="${question?.optionsQuantity }" min="1" max="5" required="required">
+		<input type="number" class="form-control" id="optionsQuantity" name="optionsQuantity" value="${questionInstance?.optionsQuantity }" min="1" max="5" required="required">
 		<input type="hidden" name="answerText" id="answer" />
-		<input type="hidden" name="questionId" id="questionId" value="${question?.id }"/>
+		<input type="hidden" name="questionId" id="questionId" value="${questionInstance?.id }"/>
 	</div>
 </div>
 <div class="form-group">
@@ -26,8 +26,3 @@
 <div id="divAlternatives"></div>
 
 <hr />
-<div class="form-group">
-	<div class="input-group w-100pc">
-		<button class="btn btn-primary pull-right" type="submit"><g:message code="default.button.create.label"/></button>
-	</div>
-</div>

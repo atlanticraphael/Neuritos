@@ -13,6 +13,7 @@
     ================================================== -->
     <asset:stylesheet href="uikit/uikit.css" rel="stylesheet" />
     <asset:stylesheet href="uikit/uikit-browser.css" rel="stylesheet" />
+    <asset:stylesheet href="custom.css" rel="stylesheet" />
     <g:layoutHead />
 </head>
 <body>

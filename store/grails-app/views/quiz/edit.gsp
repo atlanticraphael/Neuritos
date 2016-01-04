@@ -33,7 +33,7 @@
 						    <div class="form-group">
 								<div class="input-group">
 									<g:link action="allocateQuestions" params="[id:quizInstance?.id]">
-					                	<button class="btn btn-w-m btn-primary pull-right"><i class="fa fa-cog"></i>&nbsp;<g:message code="default.button.allocateQuestions.label"/></button>
+					                	<button class="btn btn-w-m btn-primary pull-right"><i class="fa fa-cog"></i>&nbsp;<g:message code="default.button.addQuestions.label"/></button>
 									</g:link>
 								</div>
 							</div>

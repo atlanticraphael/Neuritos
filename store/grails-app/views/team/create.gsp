@@ -23,21 +23,11 @@
 					<div class="code-sample">
 						<div class="tab-output row">
 							<h3><g:message code="default.create.domain.label" args="[className]"/></h3>
-							<g:form controller="team" action="save" role="form">
-								<div class="form-group">
-									<label><g:message code="team.name.label"/></label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="icon fa fa-user"></i>
-										</div>
-										<input type="text" class="form-control" name="name"
-											placeholder="${message(code: 'team.placeholder.name.label')}">
-									</div>
-								</div>
-								<hr />
+							<g:form url="[resource:teamInstance, action:'save']"  role="form">
+								<g:render template="form" />
 								<div class="form-group">
 									<div class="input-group w-100pc">
-										<button class="btn btn-primary pull-right" type="submit" ><g:message code="default.button.create.label"/></button>
+										<g:submitButton name="create" class="btn btn-primary pull-right" value="${message(code: 'default.button.create.label')}" />
 									</div>
 								</div>
 						    </g:form>
@@ -62,7 +52,12 @@
 											<td style="text-align: center;"><span class="val"><g:formatDate date="${team?.creationDate}" format="dd/MM/yyyy"/></span></td>
 											<td style="text-align: center;"><span class="val">${team?.teamUser?.size()}</span></td>
 											<td style="text-align: center;">
-												<button class="btn btn-primary pull-right" onclick="allocateUsers(${team?.id })"><i class="fa fa-group"></i>&nbsp;<g:message code="default.button.manageUsers.label"/></button>
+												<g:link action="edit" params="[id:team?.id]">
+													<button class="btn btn-primary" type="submit" title="${message(code: 'default.tooltip.edit.label')}"><i class="icon-center fa fa-edit"></i></button>
+												</g:link>
+												<g:link action="delete" params="[id:team?.id]">
+													<button class="btn btn-secondary" type="button" title="${message(code: 'default.tooltip.delete.label')}"><i class="icon-center fa fa-trash"></i></button>
+												</g:link>
 											</td>
 										</tr>
 									</g:each>

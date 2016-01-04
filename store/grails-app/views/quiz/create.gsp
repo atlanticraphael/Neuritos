@@ -22,11 +22,11 @@
 					<div class="code-sample">
 						<div class="tab-output row">
 							<h3><g:message code="default.create.domain.label" args="[entityName]"/></h3>
-							<g:form controller="quiz" action="save" role="form">
+							<g:form url="[resource:teamInstance, action:'save']"  role="form">
 								<g:render template="form" />
 								<div class="form-group">
 									<div class="input-group w-100pc">
-										<button class="btn btn-primary pull-right" type="submit" ><g:message code="default.button.create.label"/></button>
+										<g:submitButton name="create" class="btn btn-primary pull-right" value="${message(code: 'default.button.create.label')}" />
 									</div>
 								</div>	
 						    </g:form>

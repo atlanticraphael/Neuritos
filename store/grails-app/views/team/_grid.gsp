@@ -1,9 +1,9 @@
 <div class="code-sample">
 	<div class="tab-output row">
-		<h3><g:message code="quiz.list.teamUser.label"/></h3>
+		<h3><g:message code="team.list.teamUser.label"/></h3>
 		<g:if test="${!team?.teamUser}">
 			<div class="alert alert-danger ukb-error" style="display: block;">
-				<g:message code="quiz.list.teamUser.empty.message"/>
+				<g:message code="team.list.teamUser.empty.message"/>
 			</div>
 		</g:if>
 		<ul class="vlinks vlinks-iconed vlinks-tabled vlinks-ruled vlinks-ruled-dots" style="width: 95%;">
@@ -25,7 +25,7 @@
 <!-- Container -->
 <div class="code-sample">
 	<div class="tab-output row">
-		<h3><g:message code="quiz.list.availableUsers.label"/></h3>
+		<h3><g:message code="team.list.availableUsers.label"/></h3>
 		<g:if test="${listAvailableUser}">
 			<table class="table table-hover table-responsive">
 				<thead>
@@ -54,7 +54,7 @@
 		</g:if>
 		<g:else>
 			<div class="alert alert-danger ukb-error" style="display: block;">
-				<g:message code="quiz.list.availableUsers.empty.message"/>
+				<g:message code="team.list.availableUsers.empty.message"/>
 			</div>
 		</g:else>
 	</div>

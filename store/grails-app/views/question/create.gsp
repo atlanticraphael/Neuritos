@@ -23,8 +23,13 @@
 					<div class="code-sample">
 						<div class="tab-output row">
 							<h3><g:message code="default.create.domain.label" args="[className]"/></h3>
-							<g:form controller="question" action="save" role="form">
+							<g:form url="[resource:questionInstance, action:'save']"  role="form">
 								<g:render template="form" />
+								<div class="form-group">
+									<div class="input-group w-100pc">
+										<g:submitButton name="create" class="btn btn-primary pull-right" value="${message(code: 'default.button.create.label')}" />
+									</div>
+								</div>
 						    </g:form>
 						</div>
 					</div>
@@ -67,10 +72,10 @@
 												</span>
 											</td>
 											<th style="text-align: center;">
-												<g:link action="show" params="[id:question.id]">
+												<g:link action="edit" params="[id:question?.id]">
 													<button class="btn btn-primary" type="submit" title="${message(code: 'default.tooltip.edit.label')}"><i class="icon-center fa fa-edit"></i></button>
 												</g:link>
-												<g:link action="delete" params="[id:question.id]">
+												<g:link action="delete" params="[id:question?.id]">
 													<button class="btn btn-secondary" type="button" title="${message(code: 'default.tooltip.delete.label')}"><i class="icon-center fa fa-trash"></i></button>
 												</g:link>
 											</th>

@@ -1,14 +1,10 @@
 package br.com.neuritos.controller
 
-import br.com.neuritos.converter.domain.Account
-import br.com.neuritos.converter.domain.Choice;
-import br.com.neuritos.converter.domain.Question;
+import grails.transaction.Transactional
 import br.com.neuritos.converter.domain.Quiz
 import br.com.neuritos.converter.domain.Team
 import br.com.neuritos.converter.domain.TeamUser
 import br.com.neuritos.converter.domain.User
-import grails.converters.JSON
-import grails.transaction.Transactional
 
 class TeamController {
 
@@ -98,4 +94,32 @@ class TeamController {
 		respond Quiz.get(id)
 	}
 	
+	def delete(Long id) {
+		Team team = Team.get(id)
+								
+		team.delete flush:true
+		
+		redirect action: 'create'
+	}
+	
+	def edit(Team teamInstance) {
+		respond teamInstance
+	}
+
+	@Transactional
+	def update(Team teamInstance) {
+		if (teamInstance == null) {
+			notFound()
+			return
+		}
+		
+		if (teamInstance.hasErrors()) {
+			respond teamInstance.errors, view:'edit'
+			return
+		}
+
+		teamInstance.save flush:true
+		
+		redirect action: 'create'
+	}
 }

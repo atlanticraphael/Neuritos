@@ -1,13 +1,10 @@
 package br.com.neuritos.controller
 
-import br.com.neuritos.converter.domain.Account
-import br.com.neuritos.converter.domain.Choice;
-import br.com.neuritos.converter.domain.Question;
-import br.com.neuritos.converter.domain.Quiz
-import br.com.neuritos.converter.domain.Team
-import br.com.neuritos.converter.domain.User
 import grails.converters.JSON
 import grails.transaction.Transactional
+import br.com.neuritos.converter.domain.Choice
+import br.com.neuritos.converter.domain.Question
+import br.com.neuritos.converter.domain.User
 
 class QuestionController {
 
@@ -76,5 +73,44 @@ class QuestionController {
 		question.delete flush:true
 		
 		redirect action:'create'
+	}
+	
+	def edit(Question questionInstance) {
+		respond questionInstance
+	}
+
+	@Transactional
+	def update(Question questionInstance) {
+		if (questionInstance == null) {
+			notFound()
+			return
+		}
+		
+		if (questionInstance.hasErrors()) {
+			respond questionInstance.errors, view:'edit'
+			return
+		}
+
+		questionInstance.save flush:true
+		
+		/*String []choices = params.text
+		int answerNumber = Integer.parseInt(params.answerText)
+		
+		List<Choice> listOptions = new ArrayList<Choice>()
+		Long order = 1
+		for (int i = 0; i < questionInstance.optionsQuantity; i++) {
+			Choice choice = new Choice()
+			choice.text = choices[i]
+			choice.optionOrder = order
+			choice.question = questionInstance
+			
+			if (i == answerNumber)
+				choice.answer = true
+				
+			choice.save flush:true
+			order++
+		}*/
+		
+		redirect action: 'create'
 	}
 }
