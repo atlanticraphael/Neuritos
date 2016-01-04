@@ -66,6 +66,7 @@ class QuizController {
 		respond Quiz.get(id)
 	}
 	
+	@Transactional
 	def delete(Long id) {
 		Quiz quiz = Quiz.get(id)
 

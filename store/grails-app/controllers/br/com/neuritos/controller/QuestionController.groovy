@@ -31,21 +31,7 @@ class QuestionController {
 		
 		String []choices = params.text
 		int answerNumber = Integer.parseInt(params.answerText)
-		
-		List<Choice> listOptions = new ArrayList<Choice>()
-		Long order = 1
-		for (int i = 0; i < questionInstance.optionsQuantity; i++) {
-			Choice choice = new Choice()
-			choice.text = choices[i]
-			choice.optionOrder = order
-			choice.question = questionInstance
-			
-			if (i == answerNumber)
-				choice.answer = true
-				
-			choice.save flush:true	
-			order++
-		}
+		saveChoices(choices, answerNumber, questionInstance)
 		
 		redirect action:'create'
 	}
@@ -68,6 +54,7 @@ class QuestionController {
 		render question.listOptions as JSON
 	}
 	
+	@Transactional
 	def delete(Long id) {
 		Question question = Question.get(id)
 		question.delete flush:true
@@ -93,24 +80,33 @@ class QuestionController {
 
 		questionInstance.save flush:true
 		
-		/*String []choices = params.text
-		int answerNumber = Integer.parseInt(params.answerText)
+		List<Choice> listOptions = Choice.findAllByQuestion(questionInstance)
+		for(Choice choice in listOptions){
+			choice.delete flush:true
+		}
 		
+		String []choices = params.text
+		int answerNumber = Integer.parseInt(params.answerText)
+		saveChoices(choices,answerNumber, questionInstance)
+		
+		redirect action: 'create'
+	}
+	
+	def saveChoices(def choices, int answerNumber, Question question){
 		List<Choice> listOptions = new ArrayList<Choice>()
 		Long order = 1
-		for (int i = 0; i < questionInstance.optionsQuantity; i++) {
+		for (int i = 0; i < question.optionsQuantity; i++) {
 			Choice choice = new Choice()
 			choice.text = choices[i]
 			choice.optionOrder = order
-			choice.question = questionInstance
+			choice.question = question
 			
 			if (i == answerNumber)
 				choice.answer = true
 				
 			choice.save flush:true
 			order++
-		}*/
+		}
 		
-		redirect action: 'create'
 	}
 }

@@ -1,19 +1,19 @@
 <div class="form-group">
-	<label><g:message code="question.header.label"/></label>
+	<label for="header"><g:message code="question.header.label"/></label>
 	<div class="input-group">
 		<div class="input-group-addon">
 			<i class="icon fa fa-file-text"></i>
 		</div>
-		<textarea rows="3" class="form-control" name="header" required="required">${questionInstance?.header}</textarea>
+		<g:textArea class="form-control" name="header" cols="40" rows="5" maxlength="100000" value="${questionInstance?.header}" required=""/>		
 	</div>
 </div>
 <div class="form-group">
-	<label><g:message code="question.optionsQuantity.label"/></label>
+	<label for="optionsQuantity"><g:message code="question.optionsQuantity.label"/></label>
 	<div class="input-group">
 		<div class="input-group-addon">
 			<i class="icon fa fa-user"></i>
 		</div>
-		<input type="number" class="form-control" id="optionsQuantity" name="optionsQuantity" value="${questionInstance?.optionsQuantity }" min="1" max="5" required="required">
+		<g:field name="optionsQuantity" type="number" value="${questionInstance?.optionsQuantity}" min="1" max="5" required="" class="form-control"/>
 		<input type="hidden" name="answerText" id="answer" />
 		<input type="hidden" name="questionId" id="questionId" value="${questionInstance?.id }"/>
 	</div>

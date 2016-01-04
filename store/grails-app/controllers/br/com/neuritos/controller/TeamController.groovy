@@ -94,6 +94,7 @@ class TeamController {
 		respond Quiz.get(id)
 	}
 	
+	@Transactional
 	def delete(Long id) {
 		Team team = Team.get(id)
 								
