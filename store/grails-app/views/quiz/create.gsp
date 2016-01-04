@@ -23,22 +23,12 @@
 						<div class="tab-output row">
 							<h3><g:message code="default.create.domain.label" args="[entityName]"/></h3>
 							<g:form controller="quiz" action="save" role="form">
-								<div class="form-group">
-									<label for="name"><g:message code="quiz.name.label"/></label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="icon fa fa-user"></i>
-										</div>
-										<input type="text" class="form-control" name="name" required="required"
-											placeholder="${message(code: 'quiz.placeholder.name.label')}">
-									</div>
-								</div>
-								<hr />
+								<g:render template="form" />
 								<div class="form-group">
 									<div class="input-group w-100pc">
 										<button class="btn btn-primary pull-right" type="submit" ><g:message code="default.button.create.label"/></button>
 									</div>
-								</div>
+								</div>	
 						    </g:form>
 						</div>
 					</div>

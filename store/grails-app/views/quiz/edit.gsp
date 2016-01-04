@@ -23,23 +23,20 @@
 						<div class="tab-output row">
 							<h3><g:message code="default.edit.domain.label" args="[entityName]"/></h3>
 							<g:form url="[resource:quizInstance, action:'update']"  role="form">
-								<div class="form-group">
-									<label for="name"><g:message code="quiz.name.label"/></label>
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="icon fa fa-user"></i>
-										</div>
-										<g:textField class="form-control" name="name" value="${quizInstance?.name}" 
-											placeholder="${message(code: 'quiz.placeholder.name.label')}" required=""/>
-									</div>
-								</div>
-								<hr />
+								<g:render template="form" />
 								<div class="form-group">
 									<div class="input-group w-100pc">
-										<button class="btn btn-primary pull-right" type="submit" ><g:message code="default.button.create.label"/></button>
+										<g:actionSubmit class="btn btn-primary pull-right" action="update" value="${message(code: 'default.button.update.label')}" />
 									</div>
 								</div>
 						    </g:form>
+						    <div class="form-group">
+								<div class="input-group">
+									<g:link action="allocateQuestions" params="[id:quizInstance?.id]">
+					                	<button class="btn btn-w-m btn-primary pull-right"><i class="fa fa-cog"></i>&nbsp;<g:message code="default.button.allocateQuestions.label"/></button>
+									</g:link>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

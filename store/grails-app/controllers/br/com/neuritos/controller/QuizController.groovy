@@ -41,8 +41,6 @@ class QuizController {
 	
 	
 	def edit(Quiz quizInstance) {
-		println 'Editando'
-		
 		respond quizInstance
 	}
 
@@ -52,6 +50,16 @@ class QuizController {
 			notFound()
 			return
 		}
+		
+		if (quizInstance.hasErrors()) {
+			respond quizInstance.errors, view:'edit'
+			return
+		}
+
+		quizInstance.save flush:true
+		
+		redirect action: 'create'
+
 	}
 	
 	def show(Long id) {
