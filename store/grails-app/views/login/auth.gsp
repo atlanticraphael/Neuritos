@@ -42,7 +42,7 @@
 			$(document).ready(function() {
 				$('#username').focus();
 
-				var language = location.href.substring(location.href.indexOf("=")+1, location.href.length);
+				<%--		var language = location.href.substring(location.href.indexOf("=")+1, location.href.length);
 				
 				if(location.href.indexOf("=") < 0){
 					language = "pt_br";
@@ -54,7 +54,7 @@
 					}else{
 						$(element).hide();
 					}
-				});
+				}); --%>
 			});
 		</script>
 	</body>
