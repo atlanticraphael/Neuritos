@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
 
 	var idioma = location.href.substring(location.href.indexOf("=")+1, location.href.length);
 	
@@ -14,7 +14,7 @@ $(document).ready(function() {
 		}
 	});
 });
-
+*/
 
 
 // UTILITY FUNCTIONS

@@ -1,4 +1,4 @@
-<sec:ifLoggedIn>
+<%--   <sec:ifLoggedIn> --%>
 	<div class="btn-wrapper navbar-el dropdown  navbar-left">
 		<ul class="nav navbar-top-links navbar-right">	
 			<li class="btn-group">
@@ -31,7 +31,7 @@
 			</li>
 		</ul>
 	</div>
-</sec:ifLoggedIn>
+<%--</sec:ifLoggedIn>
 <sec:ifNotLoggedIn>
 	<div class="btn-wrapper navbar-el dropdown  navbar-left">
 		<ul class="nav navbar-top-links navbar-right">	
@@ -66,4 +66,4 @@
 			</li>
 		</ul>
 	</div>
-</sec:ifNotLoggedIn>
+</sec:ifNotLoggedIn>--%>
