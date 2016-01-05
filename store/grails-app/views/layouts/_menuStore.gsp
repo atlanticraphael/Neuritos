@@ -94,7 +94,7 @@
 				</li>
 				<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_ACCOUNT_MANAGER">
 					<li class="no-line">
-						<a href="${createLink(uri: '/contentConverter/createConverter')}">Conversor</a>
+						<a href="${createLink(uri: '/contentConverter/createConverter')}"><g:message code="menu.converter.label"/></a>
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Quiz<i class="fa fa-angle-down toggler"></i></a>
