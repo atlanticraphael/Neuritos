@@ -16,26 +16,26 @@
 	<div class="row">
 		<div class="col-md-2">
 			<div class="form-group">
-				<input type="text" class="form-control" name="name">
+				<g:field type="text" class="form-control" name="name" value="${params?.name}"/>
 				<input type="hidden" name="idTeam" value="${team?.id}">
 			</div>
 		</div>
 
 		<div class="col-md-2">
 			<div class="form-group">
-				<input type="text" class="form-control" name="username">
+				<g:field type="text" class="form-control" name="username" value="${params?.username}"/>
 			</div>
 		</div>
 
 		<div class="col-md-2">
 			<div class="form-group slider-group">
-				<input type="text" class="form-control" name="cpf">
+				<g:field type="text" class="form-control" name="cpf" value="${params?.cpf}"/>
 			</div>
 		</div>
 		
 		<div class="col-md-2">
 			<div class="form-group slider-group">
-				<input type="text" class="form-control" name="phoneNumber">
+				<g:field type="text" class="form-control" name="phoneNumber" value="${params?.phoneNumber}"/>
 			</div>
 		</div>
 		

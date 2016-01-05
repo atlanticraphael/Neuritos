@@ -1,10 +1,8 @@
 package br.com.neuritos.quiz
 
-import java.util.List;
-
-import br.com.neuritos.converter.domain.User
 import grails.transaction.Transactional
 import groovy.sql.Sql
+import br.com.neuritos.converter.domain.User
 
 @Transactional
 class UserService {
@@ -14,32 +12,27 @@ class UserService {
 	List<User> findAllWithParams(String name, String username, String cpf, String phoneNumber, Long idTeam, Long idOwner){
 		def sql = new Sql(dataSource)
 
-		String whereClause = name != null ? " u.name like '%$name%'" : ''
-		String whereClauseUsername = username != null ? " u.username like '%$username%' " :  ''
-		String whereClauseCpf =  cpf != null ? " u.cpf like '%$cpf%' " : ''
-		String whereClausePhoneNumber = phoneNumber != null ? " u.phone_number = '$phoneNumber' " : ''
+		String whereClause = " WHERE U.QUIZ_ENABLE = 1 "
+		String whereClauseName = name != null ? " UPPER(U.NAME) LIKE UPPER('%${name}%')" : ''
+		String whereClauseUsername = username != null ? " UPPER(U.USERNAME) LIKE UPPER('%${username}%') " :  ''
+		String whereClauseCpf =  cpf != null ? " U.CPF LIKE '%${cpf}%' " : ''
+		String whereClausePhoneNumber = phoneNumber != null ? " U.PHONE_NUMBER LIKE '%${phoneNumber}%' " : ''
 
 		StringBuilder sb = new StringBuilder(" SELECT * FROM TNE_USER U  ")
+		sb.append(whereClause)
 
 		if (name != null)
-			sb.append(" WHERE ").append(whereClause)
+			sb.append(" AND ").append(whereClauseName)
 
-		if (name != null && username != null)
+		if (username != null)
 			sb.append(" AND ").append(whereClauseUsername)
-		else if (username != null)
-			sb.append(" WHERE ").append(whereClauseUsername)
-
-		if ((name != null || username != null) && cpf != null)
+		
+		if (cpf != null)
 			sb.append(" AND ").append(whereClauseCpf)
-		else if (cpf != null)
-			sb.append(" WHERE ").append(whereClauseCpf)
-
-		if ((name != null || username != null || cpf != null) && phoneNumber != null)
+		
+		if (phoneNumber != null)
 			sb.append(" AND ").append(whereClausePhoneNumber)
-		else if (phoneNumber != null)
-			sb.append(" WHERE ").append(whereClausePhoneNumber)
-
-
+		
 		sb.append(" AND U.ID NOT IN(SELECT TU.USER_ID FROM TNE_TEAM_USER TU ")
 		sb.append(" WHERE TU.TEAM_ID = '${idTeam}') ")
 		sb.append(" AND U.OWNER_ID  = '${idOwner}' ")

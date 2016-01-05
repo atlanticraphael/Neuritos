@@ -56,7 +56,7 @@ class TeamController {
 		
 		Team team = Team.get(idTeam)
 		
-		render view:'allocateUsers', model:[listAvailableUser:userList, team:team]
+		render view:'allocateUsers', model:[listAvailableUser:userList, team:team, params:userInstance]
 	}
 	
 	def addUserToTeam(Long idUser, Long idTeam) {
