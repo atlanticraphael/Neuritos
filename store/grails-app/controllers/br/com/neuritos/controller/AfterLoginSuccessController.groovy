@@ -21,6 +21,7 @@ class AfterLoginSuccessController {
 		session["username"] = usuario?.name
 		session["password"] = usuario?.password
 
-		render view:'/index'
+		redirect uri:'/'
+		//render view:'/index'
 	}
 }

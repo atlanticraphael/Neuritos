@@ -1,22 +1,3 @@
-/*$(document).ready(function() {
-
-	var idioma = location.href.substring(location.href.indexOf("=")+1, location.href.length);
-	
-	if(location.href.indexOf("=") < 0){
-		idioma = "pt_br";
-	}
-	
-	$(".fa-check").each(function(index, element){
-		if($(element).attr('data-value') == idioma){
-			$(element).show();
-		}else{
-			$(element).hide();
-		}
-	});
-});
-*/
-
-
 // UTILITY FUNCTIONS
 // ========================================================================
 // Console fix
