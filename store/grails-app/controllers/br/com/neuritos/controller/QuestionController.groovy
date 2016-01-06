@@ -57,6 +57,14 @@ class QuestionController {
 	@Transactional
 	def delete(Long id) {
 		Question question = Question.get(id)
+		
+		int teste = 1
+		if(teste > 0) {
+			flash.message = message(code: 'question.empty.message')
+			redirect action:'create'
+			return
+		}
+		
 		question.delete flush:true
 		
 		redirect action:'create'
