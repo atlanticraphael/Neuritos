@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript"> var contextPath = '${request.contextPath}'; alert(contextPath); </script>
-    <script type="text/javascript"> var language = '${session['language'] ?: 'pt_br'}'; alert(language); </script>
+    <script type="text/javascript"> var contextPath = '${request.contextPath}'; </script>
+    <script type="text/javascript"> var language = '${session['language'] ?: 'pt_br'}'; </script>
    	<title><g:message code="default.welcome.label"/></title>
      <!-- Bootstrap core CSS
     ================================================== -->

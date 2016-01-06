@@ -2,9 +2,10 @@ package br.com.neuritos.controller
 
 import org.springframework.web.servlet.support.RequestContextUtils
 
-import br.com.neuritos.converter.domain.User
 import org.springframework.web.servlet.LocaleResolver
 import org.springframework.web.servlet.support.RequestContextUtils
+
+import br.com.neuritos.converter.domain.User
 
 class AfterLoginSuccessController {
 
@@ -22,6 +23,5 @@ class AfterLoginSuccessController {
 		session["password"] = usuario?.password
 
 		redirect uri:'/'
-		//render view:'/index'
 	}
 }
