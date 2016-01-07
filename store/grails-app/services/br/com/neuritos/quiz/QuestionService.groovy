@@ -1,9 +1,9 @@
 package br.com.neuritos.quiz
 
-import br.com.neuritos.converter.domain.Question
-import br.com.neuritos.converter.domain.User
 import grails.transaction.Transactional
 import groovy.sql.Sql
+import br.com.neuritos.controller.vo.DeleteVO
+import br.com.neuritos.converter.domain.Question
 
 @Transactional
 class QuestionService {
@@ -39,4 +39,33 @@ class QuestionService {
 		listQuestions
 		
     }
+	
+	def findQuestionInQuestionQuiz(Long idQuestion) {
+		def sql = new Sql(dataSource)
+		
+		def rows = sql.rows("""
+
+			 SELECT QQ.QUIZ_ID AS ID
+                  , Q.NAME AS DESCRIPTION
+               FROM TNE_QUESTION_QUIZ QQ
+             INNER JOIN TNE_QUIZ Q ON Q.ID = QQ.QUIZ_ID
+               WHERE QQ.QUESTION_ID = ${idQuestion}
+               ORDER BY Q.NAME
+				""")
+				
+		List<DeleteVO>  recordsList = new ArrayList<DeleteVO>()
+		
+		rows.each{ row ->
+			def item = new DeleteVO()
+			item.id           = row.id
+			item.description  = row.description
+			item.relationship = "QUIZ"
+			
+			recordsList << item
+		}
+		
+		sql.close()
+		
+		recordsList
+	}
 }

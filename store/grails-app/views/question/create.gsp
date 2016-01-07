@@ -20,12 +20,14 @@
 			</div>
 			<section class="content-block default-bg">
 		    	<div class="container cont-main">
-					<g:if test="${flash.message}">
+					<g:if test="${flash.messageError}">
 						<div class="alert alert-danger ukb-warning" role="alert">
-							${flash.message}
 							<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-						</div>
-					</g:if>					
+							<ul>
+						    	<g:each in="${flash.messageError}"><li>${it}</li></g:each> 
+						  	</ul>
+						  </div>	 
+					</g:if> 				
 					<div class="code-sample">
 						<div class="tab-output row">
 							<h3><g:message code="default.create.domain.label" args="[className]"/></h3>

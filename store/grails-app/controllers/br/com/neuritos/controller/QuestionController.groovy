@@ -9,6 +9,7 @@ import br.com.neuritos.converter.domain.User
 class QuestionController {
 
 	def springSecurityService
+	def questionService
 	
 	def create() {
 		List<Question> listQuestion = Question.findAll()
@@ -57,14 +58,17 @@ class QuestionController {
 	@Transactional
 	def delete(Long id) {
 		Question question = Question.get(id)
+		def recordsList = questionService.findQuestionInQuestionQuiz(question?.id)
 		
-		int teste = 1
-		if(teste > 0) {
-			flash.message = message(code: 'question.empty.message')
+		if(recordsList) {
+			def messages = []
+			recordsList.each {
+			  messages << message(code: 'default.not.deleted.message', args: [it.relationship, it.id, it.description])
+			}
+			flash.messageError = messages
 			redirect action:'create'
 			return
 		}
-		
 		question.delete flush:true
 		
 		redirect action:'create'
