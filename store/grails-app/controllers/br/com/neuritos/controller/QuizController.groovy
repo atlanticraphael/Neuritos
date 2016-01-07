@@ -70,14 +70,6 @@ class QuizController {
 	def delete(Long id) {
 		Quiz quiz = Quiz.get(id)
 
-		if (quiz.listTeamQuiz.size() > 0) {
-			quiz.listTeamQuiz.each { it.delete(flush: true) }
-		}
-
-		if (quiz.listQuestionQuiz.size() > 0) {
-			quiz.listQuestionQuiz.each { it.delete(flush: true) }
-		}
-						
 		quiz.delete flush:true
 		
 		redirect action: 'create'

@@ -20,6 +20,14 @@
 			</div>
 			<section class="content-block default-bg">
 		    	<div class="container cont-main">
+		    		<g:if test="${flash.messageError}">
+						<div class="alert alert-danger ukb-warning" role="alert">
+							<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<ul>
+						    	<g:each in="${flash.messageError}"><li>${it}</li></g:each> 
+						  	</ul>
+						  </div>	 
+					</g:if>
 					<div class="code-sample">
 						<div class="tab-output row">
 							<h3><g:message code="default.create.domain.label" args="[className]"/></h3>
@@ -50,7 +58,7 @@
 										<tr>
 											<td><span class="key">${team?.name}</span></td>
 											<td style="text-align: center;"><span class="val"><g:formatDate date="${team?.creationDate}" format="dd/MM/yyyy"/></span></td>
-											<td style="text-align: center;"><span class="val">${team?.teamUser?.size()}</span></td>
+											<td style="text-align: center;"><span class="val">${team?.listTeamUser?.size()}</span></td>
 											<td style="text-align: center;">
 												<g:link action="edit" params="[id:team?.id]">
 													<button class="btn btn-primary" type="submit" title="${message(code: 'default.tooltip.edit.label')}"><i class="icon-center fa fa-edit"></i></button>

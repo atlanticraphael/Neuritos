@@ -25,7 +25,7 @@
 							</div>
 						</div>
 						<div class="col-md-4">
-							<g:link action="allocateTeam" params="[id:quiz.id]">
+							<g:link action="allocateTeam" params="[id:quiz?.id]">
 				                <button class="btn btn-w-m btn-primary pull-right"><i class="fa fa-cog"></i>&nbsp;<g:message code="default.button.assignTeam.label"/></button>
 							</g:link>
 						</div>

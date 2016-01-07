@@ -13,8 +13,6 @@ class Quiz {
 	static mapping = {
 		table 'TNE_QUIZ'
 		version false
-		listTeamQuiz cascade: 'none'
-		listQuestionQuiz cascade: 'none'
 	}
 
 	static constraints = {

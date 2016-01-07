@@ -97,7 +97,17 @@ class TeamController {
 	@Transactional
 	def delete(Long id) {
 		Team team = Team.get(id)
-								
+		def recordsList = teamService.findTeamInTeamQuiz(team?.id)
+		
+		if(recordsList) {
+			def messages = []
+			recordsList.each {
+			  messages << message(code: 'default.not.deleted.message', args: [it.relationship, it.id, it.description])
+			}
+			flash.messageError = messages
+			redirect action:'create'
+			return
+		}
 		team.delete flush:true
 		
 		redirect action: 'create'

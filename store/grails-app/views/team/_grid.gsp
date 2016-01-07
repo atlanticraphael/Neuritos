@@ -1,13 +1,13 @@
 <div class="code-sample">
 	<div class="tab-output row">
 		<h3><g:message code="team.list.teamUser.label"/></h3>
-		<g:if test="${!team?.teamUser}">
+		<g:if test="${!team?.listTeamUser}">
 			<div class="alert alert-danger ukb-error" style="display: block;">
 				<g:message code="team.list.teamUser.empty.message"/>
 			</div>
 		</g:if>
 		<ul class="vlinks vlinks-iconed vlinks-tabled vlinks-ruled vlinks-ruled-dots" style="width: 95%;">
-			<g:each var="teamUser" in="${team?.teamUser}" >
+			<g:each var="teamUser" in="${team?.listTeamUser}" >
 				<li>
 					<span class="key">
 						<i class="icon fa fa-user"></i>

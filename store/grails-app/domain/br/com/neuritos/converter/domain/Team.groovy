@@ -8,11 +8,12 @@ class Team {
 	Date creationDate
 	User user
 	
-	static hasMany = [teamUser: TeamUser, listQuiz:TeamQuiz]
+	static hasMany = [listTeamUser: TeamUser, listTeamQuiz:TeamQuiz]
 	
 	static mapping = {
 		table 'TNE_TEAM'
 		version false
+		listTeamQuiz cascade: 'none'
 	}
 
 	static constraints = {

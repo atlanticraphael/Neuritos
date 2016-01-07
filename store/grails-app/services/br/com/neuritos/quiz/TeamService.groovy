@@ -1,9 +1,10 @@
 package br.com.neuritos.quiz
 
-import br.com.neuritos.converter.domain.Team
-import br.com.neuritos.converter.domain.User
 import grails.transaction.Transactional
 import groovy.sql.Sql
+import br.com.neuritos.controller.vo.DeleteVO
+import br.com.neuritos.converter.domain.Team
+import br.com.neuritos.converter.domain.User
 
 @Transactional
 class TeamService {
@@ -42,4 +43,33 @@ class TeamService {
 		listTeam
 		
     }
+	 
+	 def findTeamInTeamQuiz(Long idTeam) {
+		def sql = new Sql(dataSource)
+		
+		def rows = sql.rows("""
+
+			 SELECT TQ.QUIZ_ID AS ID
+                  , Q.NAME AS DESCRIPTION
+               FROM TNE_TEAM_QUIZ TQ
+             INNER JOIN TNE_QUIZ Q ON Q.ID = TQ.QUIZ_ID
+               WHERE TQ.TEAM_ID = ${idTeam}
+               ORDER BY Q.NAME
+				""")
+				
+		List<DeleteVO>  recordsList = new ArrayList<DeleteVO>()
+		
+		rows.each{ row ->
+			def item = new DeleteVO()
+			item.id           = row.id
+			item.description  = row.description
+			item.relationship = "QUIZ"
+			
+			recordsList << item
+		}
+		
+		sql.close()
+		
+		recordsList
+	}
 }
