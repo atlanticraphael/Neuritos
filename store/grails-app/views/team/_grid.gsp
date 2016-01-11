@@ -22,23 +22,20 @@
 	    </ul>
 	</div>
 </div>
-<!-- Container -->
 <div class="code-sample">
 	<div class="tab-output row">
 		<h3><g:message code="team.list.availableUsers.label"/></h3>
 		<g:if test="${listAvailableUser}">
 			<table class="table table-hover table-responsive">
-				<thead>
-					<tr>
-						<td class="border-bottom: 1px solid rgba(47, 50, 68, 0.1);">
-							<span class="key"><g:message code="user.name.label"/></span>
-						</td>
-						<td><span class="val"><g:message code="user.email.label"/></span></td>
-						<td><span class="val"><g:message code="user.document.label"/></span></td>
-						<td><span class="val"><g:message code="user.phone.label"/></span></td>
-						<td></td>
-					</tr>
-				</thead>
+				<tr>
+					<th class="border-bottom: 1px solid rgba(47, 50, 68, 0.1);">
+						<span class="key"><g:message code="user.name.label"/></span>
+					</th>
+					<th><span class="val"><g:message code="user.email.label"/></span></th>
+					<th><span class="val"><g:message code="user.document.label"/></span></th>
+					<th><span class="val"><g:message code="user.phone.label"/></span></th>
+					<th></th>
+				</tr>
 				<g:each var="user" in="${listAvailableUser}">
 					<tr>
 						<td><span class="key">${user?.name}</span></td>

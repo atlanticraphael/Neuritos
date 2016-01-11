@@ -7,7 +7,9 @@ class Quiz {
 	String name
 	Date creationDate
 	Account account
-	
+	Boolean sent
+	Date sentDate
+		
 	static hasMany = [listTeamQuiz:TeamQuiz, listQuestionQuiz:QuestionQuiz]
 	
 	static mapping = {
@@ -18,11 +20,23 @@ class Quiz {
 	static constraints = {
 		name nullable: true, maxSize: 1020
 		creationDate nullable: true
-		account nullable:true
+		account nullable: true
+		sent nullable: true
+		sentDate nullable: true
 	}
 	
 	def beforeInsert(){
 		creationDate = new Date()
 		account = springSecurityService.getCurrentUser().getAccount()
+	}
+	
+	public Integer countMembers(){
+		int countMembers = 0
+		for(TeamQuiz teamQuiz : listTeamQuiz){
+			for(user in teamQuiz?.team?.listTeamUser){
+				countMembers++
+			}
+		}
+		return countMembers
 	}
 }

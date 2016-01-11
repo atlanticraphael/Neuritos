@@ -162,4 +162,18 @@ class QuizController {
 		
 	}
 	
+	def manage(){
+		def listQuizToSend = Quiz.findAllBySent(false)
+		def listQuizSent = Quiz.findAllBySent(true)
+		render view:'manage', model:[listQuizToSend:listQuizToSend, listQuizSent:listQuizSent]
+	}
+	
+	def send(Long id){
+		Quiz quiz = Quiz.get(id)
+		
+		def listQuizToSend = Quiz.findAllBySent(false)
+		def listQuizSent = Quiz.findAllBySent(true)
+		render view:'manage', model:[listQuizToSend:listQuizToSend, listQuizSent:listQuizSent]	
+	}
+	
 }

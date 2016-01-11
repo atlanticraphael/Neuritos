@@ -104,6 +104,7 @@
 							<li><a href="${createLink(uri: '/user/createUserStore')}"><g:message code="menu.createUser.label"/></a></li>
 							<li><a href="${createLink(uri: '/question/create')}"><g:message code="menu.createQuestion.label"/></a></li>
 							<li><a href="${createLink(uri: '/quiz/apply')}"><g:message code="menu.applyQuiz.label"/></a></li>
+							<li><a href="${createLink(uri: '/quiz/manage')}"><g:message code="menu.manageQuiz.label"/></a></li>
 						</ul>
 					</li>
 					<li class="no-line">
