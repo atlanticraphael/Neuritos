@@ -7,7 +7,7 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
+		"/"(controller:"header", action:"homePage")
         "/services"(view:"/store/services")
         "/prices"(view:"/store/prices")
         "/about"(view:"/store/about")
