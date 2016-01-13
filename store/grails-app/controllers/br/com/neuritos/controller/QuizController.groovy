@@ -1,11 +1,16 @@
 package br.com.neuritos.controller
 
 import grails.transaction.Transactional
+import br.com.neuritos.converter.domain.Choice
 import br.com.neuritos.converter.domain.Question
 import br.com.neuritos.converter.domain.QuestionQuiz
 import br.com.neuritos.converter.domain.Quiz
 import br.com.neuritos.converter.domain.Team
 import br.com.neuritos.converter.domain.TeamQuiz
+import br.com.neuritos.converter.domain.User
+import br.com.neuritos.converter.domain.UserQuestion
+import br.com.neuritos.converter.domain.UserQuestionOption
+import br.com.neuritos.converter.domain.UserQuizHistory
 
 class QuizController {
 
@@ -171,9 +176,46 @@ class QuizController {
 	def send(Long id){
 		Quiz quiz = Quiz.get(id)
 		
+		for(TeamQuiz teamQuiz : quiz?.listTeamQuiz){
+			for(teamUser in teamQuiz?.team?.listTeamUser){
+				generateQuizForUsers(quiz, teamUser?.user)
+			}
+		}
+		
 		def listQuizToSend = Quiz.findAllBySent(false)
 		def listQuizSent = Quiz.findAllBySent(true)
-		render view:'manage', model:[listQuizToSend:listQuizToSend, listQuizSent:listQuizSent]	
+		render view:'manage', model:[listQuizToSend:listQuizToSend, listQuizSent:listQuizSent]
 	}
 	
+	def generateQuizForUsers(Quiz quiz, User user){
+		UserQuizHistory userQuiz = new UserQuizHistory()
+		userQuiz.quiz = quiz
+		userQuiz.user = user
+		
+		if(userQuiz.save(flush:true)){
+			for(QuestionQuiz questionQuiz : quiz?.listQuestionQuiz){
+				buildQuizQuestions(questionQuiz?.question, user)
+			}
+		}
+	}	
+	
+	def buildQuizQuestions(Question question, User user){
+		 UserQuestion userQuestion = new UserQuestion()
+		 userQuestion.questionText = question?.header
+		 userQuestion.question = question
+		 userQuestion.user = user
+		 
+		 userQuestion.save flush:true
+	}
+	
+	def buildAlternatives(def choices, UserQuestion userQuestion, User user){
+		for(Choice choice in choices){
+			UserQuestionOption userQuestionOption = new UserQuestionOption()
+			
+			userQuestionOption.properties = choice
+			userQuestionOption.userQuestion = userQuestion
+			userQuestionOption.user = user
+			userQuestionOption.save flush:true
+		}
+	}
 }

@@ -12,11 +12,14 @@ class UserQuizHistory {
 		version false
 		quiz {column name:"quiz_id"}
 		user {column name:"user_id"}
+		listUserQuestions joinTable: [name: 'TNE_USER_QUIZ_QUESTION',
+			column: 'USERQUESTION_ID',
+			   key: 'USERQUIZ_ID']
 	}
 
 	static constraints = {
-		startDate nullable: false
-		finishDate nullable: false
+		startDate nullable: true
+		finishDate nullable: true
 	}
 	
 	

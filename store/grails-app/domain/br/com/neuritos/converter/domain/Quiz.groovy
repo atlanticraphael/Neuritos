@@ -33,7 +33,7 @@ class Quiz {
 	public Integer countMembers(){
 		int countMembers = 0
 		for(TeamQuiz teamQuiz : listTeamQuiz){
-			for(user in teamQuiz?.team?.listTeamUser){
+			for(teamUser in teamQuiz?.team?.listTeamUser){
 				countMembers++
 			}
 		}
