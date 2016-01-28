@@ -28,6 +28,18 @@
 					</g:if>
 					<div class="code-sample">
 						<div class="tab-output row">
+							<g:if test="${flash.messageSend}">
+								<div class="alert alert-info ukb-error" style="display: block;">
+									${flash.messageSend}
+									<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								</div>
+							</g:if>
+							<g:if test="${flash.messageSendError}">
+								<div class="alert alert-danger ukb-error" style="display: block;">
+									${flash.messageSendError}
+									<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								</div>
+							</g:if>
 							<h3><g:message code="manageQuiz.listToSend.label"/></h3>
 							<g:if test="${listQuizToSend}">
 								<table class="table table-hover table-responsive">
@@ -45,9 +57,16 @@
 											<td style="text-align: center;"><span class="val"><g:formatDate date="${quiz?.creationDate}" format="dd/MM/yyyy"/></span></td>
 											<td style="text-align: center;"><span class="val">${quiz?.countMembers()}</span></td>
 											<td style="text-align: center;">
-												<g:link action="send" params="[id:quiz?.id]">
-													<button class="btn btn-primary pull-right" type="submit"><i class="fa fa-envelope-o"></i>&nbsp;<g:message code="default.button.send.label"/></button>
-												</g:link>
+												<g:if test="${quiz?.countMembers() == 0}">
+													<g:link action="send" params="[id:quiz?.id]">
+														<button class="btn btn-primary pull-right" type="submit" disabled="disabled"><i class="fa fa-envelope-o"></i>&nbsp;<g:message code="default.button.send.label"/></button>
+													</g:link>
+												</g:if>
+												<g:else>
+													<g:link action="send" params="[id:quiz?.id]">
+														<button class="btn btn-primary pull-right" type="submit"><i class="fa fa-envelope-o"></i>&nbsp;<g:message code="default.button.send.label"/></button>
+													</g:link>
+												</g:else>
 											</td>
 										</tr>
 									</g:each>
@@ -62,6 +81,18 @@
 					</div>
 					<div class="code-sample">
 						<div class="tab-output row">
+							<g:if test="${flash.messageResend}">
+								<div class="alert alert-info ukb-error" style="display: block;">
+									${flash.messageResend}
+									<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								</div>
+							</g:if>
+							<g:if test="${flash.messageResendError}">
+								<div class="alert alert-danger ukb-error" style="display: block;">
+									${flash.messageResendError}
+									<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								</div>
+							</g:if>
 							<h3><g:message code="manageQuiz.listSent.label"/></h3>
 							<g:if test="${listQuizSent}">
 								<table class="table table-hover table-responsive">
@@ -77,11 +108,11 @@
 									<g:each var="quiz" in="${listQuizSent}">
 										<tr>
 											<td><g:link action="showDetailedQuiz" id="${quiz?.id}"><span class="key">${quiz?.name}</span></g:link></td>
-											<td style="text-align: center;"><span class="val"><g:formatDate date="${quiz?.creationDate}" format="dd/MM/yyyy"/></span></td>
+											<td style="text-align: center;"><span class="val"><g:formatDate date="${quiz?.sentDate}" format="dd/MM/yyyy"/></span></td>
 											<td style="text-align: center;"><span class="val">${quiz?.countMembersInUserQuiz()}</span></td>
 											<td style="text-align: center;"><span class="val">${quiz?.countFinalizedUser()}</span></td>
 											<td style="text-align: center;">
-												<g:link action="send" params="[id:quiz?.id]">
+												<g:link action="resendEmail" params="[id:quiz?.id]">
 													<button class="btn btn-primary pull-right" type="submit"><i class="fa fa-mail-reply-all"></i>&nbsp;<g:message code="default.button.resend.label"/></button>
 												</g:link>
 											</td>

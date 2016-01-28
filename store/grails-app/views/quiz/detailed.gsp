@@ -32,9 +32,9 @@
 					</div>				
 					<div class="code-sample">
 						<div class="tab-output row">
-							<g:if test="${flash.messageError}">
+							<g:if test="${quiz?.countMembersInUserQuiz() == 0}">
 								<div class="alert alert-danger ukb-error" style="display: block;">
-									${flash.messageError}
+									<g:message code="quizDetails.list.userQuiz.empty.message"/>
 								</div>
 							</g:if>
 							<g:each var="teamQuiz" in="${quiz?.listTeamQuiz}">

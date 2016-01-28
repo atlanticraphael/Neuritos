@@ -63,7 +63,7 @@
 							<div class="col-sm-12 col-md-12">
 								<div class="product">
 									<div class="image"> 
-										<a href="#" class="main"><asset:image src="content/icone_pdf.png" alt="" width="130px" height="130px" /></a>
+										<a class="main"><asset:image src="content/icone_pdf.png" alt="" width="130px" height="130px" /></a>
 									</div>
 									<div class="title">
 										<a class="name" href="#">${conversion?.content?.name}</a>

@@ -21,10 +21,4 @@ class UserQuizHistory {
 		startDate nullable: true
 		finishDate nullable: true
 	}
-	
-	
-	def beforeInsert() {
-		startDate = new Date()
-		finishDate = new Date()
-	}
 }

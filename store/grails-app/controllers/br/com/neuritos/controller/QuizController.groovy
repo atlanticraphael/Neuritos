@@ -162,10 +162,6 @@ class QuizController {
 		List<Quiz> listQuiz = Quiz.findAllByAccount(springSecurityService.getCurrentUser().getAccount())
 		render view:'apply', model:[edit:false, listQuiz:listQuiz]
 	}
-				
-	def applyQuiz(Long idQuiz, Long idTeam) {
-		
-	}
 	
 	def manage(){
 		render view:'manage', model:[listQuizToSend:showNotSentQuizzes(), listQuizSent:showSentQuizzes()]
@@ -181,15 +177,13 @@ class QuizController {
 		listQuizSent
 	}
 	
-	def send(Long id){
-		Quiz quiz = Quiz.get(id)
-		
+	def send(Quiz quiz){
 		for(TeamQuiz teamQuiz : quiz?.listTeamQuiz){
 			for(teamUser in teamQuiz?.team?.listTeamUser){
 				generateQuizForUsers(quiz, teamUser?.user)
 			}
 		}
-		render view:'manage', model:[listQuizToSend:showNotSentQuizzes(), listQuizSent:showSentQuizzes()]
+		redirect action:'manage'
 	}
 	
 	def generateQuizForUsers(Quiz quiz, User user){
@@ -201,6 +195,12 @@ class QuizController {
 			for(QuestionQuiz questionQuiz : quiz?.listQuestionQuiz){
 				buildQuizQuestions(questionQuiz?.question, user)
 			}
+			boolean successfulEmail = sendEmail(quiz)
+			quiz.sent = true
+			quiz.sentDate = new Date()
+			quiz.save flush:true
+			if(successfulEmail)
+				flash.messageSend = message(code:'default.created.message.label', args: [message(code:'quiz.title.label')])
 		}
 	}	
 	
@@ -224,8 +224,38 @@ class QuizController {
 		}
 	}
 	
+	def sendEmail(Quiz quiz){
+		boolean successfulEmail = true
+		for(UserQuizHistory userQuiz : quiz?.listUserQuiz){
+			try {
+				//chamada para envio de email
+			} catch (Exception e) {
+				e.printStackTrace()
+				successfulEmail = false
+				flash.messageSendError = message(code:'manageQuiz.sendEmailError.message')
+			}
+			return successfulEmail
+		}
+	}
+	
+	def resendEmail(Quiz quiz){
+		for(UserQuizHistory userQuiz : quiz?.listUserQuiz){
+			if(!userQuiz?.finishDate){
+				try {
+					//chamada para envio de email
+					//println userQuiz?.user?.name
+					flash.messageResend = message(code:'manageQuiz.resendEmail.message')
+				} catch (Exception e) {
+					e.printStackTrace()
+					flash.messageResendError = message(code:'manageQuiz.resendEmailError.message')
+				}
+			}	
+		}
+		redirect action: 'manage'
+	}
+	
 	def showDetailedQuiz(Quiz quiz){
-//		flash.messageError = message(code:'quizDetails.list.userQuiz.empty.message')
+		flash.messageError = message(code:'quizDetails.list.userQuiz.empty.message')
 		render view:'detailed', model:[quiz: quiz]
 	}
 }
