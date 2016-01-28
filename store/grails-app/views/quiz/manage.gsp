@@ -76,10 +76,10 @@
 									</tr>
 									<g:each var="quiz" in="${listQuizSent}">
 										<tr>
-											<td><span class="key">${quiz?.name}</span></td>
+											<td><g:link action="showDetailedQuiz" id="${quiz?.id}"><span class="key">${quiz?.name}</span></g:link></td>
 											<td style="text-align: center;"><span class="val"><g:formatDate date="${quiz?.creationDate}" format="dd/MM/yyyy"/></span></td>
-											<td style="text-align: center;"><span class="val">${quiz?.countMembers()}</span></td>
-											<td style="text-align: center;"><span class="val">${quiz?.countMembers()}</span></td>
+											<td style="text-align: center;"><span class="val">${quiz?.countMembersInUserQuiz()}</span></td>
+											<td style="text-align: center;"><span class="val">${quiz?.countFinalizedUser()}</span></td>
 											<td style="text-align: center;">
 												<g:link action="send" params="[id:quiz?.id]">
 													<button class="btn btn-primary pull-right" type="submit"><i class="fa fa-mail-reply-all"></i>&nbsp;<g:message code="default.button.resend.label"/></button>

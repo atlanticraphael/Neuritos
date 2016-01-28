@@ -10,7 +10,7 @@ class Quiz {
 	Boolean sent
 	Date sentDate
 		
-	static hasMany = [listTeamQuiz:TeamQuiz, listQuestionQuiz:QuestionQuiz]
+	static hasMany = [listTeamQuiz:TeamQuiz, listQuestionQuiz:QuestionQuiz, listUserQuiz:UserQuizHistory]
 	
 	static mapping = {
 		table 'TNE_QUIZ'
@@ -39,4 +39,23 @@ class Quiz {
 		}
 		return countMembers
 	}
+	
+	public Integer countMembersInUserQuiz(){
+		int countMembers = 0
+		for(UserQuizHistory userQuiz : listUserQuiz){
+			countMembers++
+		}
+		return countMembers
+	}
+	
+	public Integer countFinalizedUser(){
+		int countMembers = 0
+		for(UserQuizHistory userQuiz : listUserQuiz){
+			if(userQuiz?.finishDate){
+				countMembers++
+			}	
+		}
+		return countMembers
+	}
+	
 }

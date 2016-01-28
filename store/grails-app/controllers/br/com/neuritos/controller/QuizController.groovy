@@ -168,9 +168,17 @@ class QuizController {
 	}
 	
 	def manage(){
-		def listQuizToSend = Quiz.findAllBySent(false)
-		def listQuizSent = Quiz.findAllBySent(true)
-		render view:'manage', model:[listQuizToSend:listQuizToSend, listQuizSent:listQuizSent]
+		render view:'manage', model:[listQuizToSend:showNotSentQuizzes(), listQuizSent:showSentQuizzes()]
+	}
+	
+	def showNotSentQuizzes(){
+		def listQuizToSend = Quiz.findAllBySent(false, [sort:"name"])
+		listQuizToSend
+	}
+	
+	def showSentQuizzes(){
+		def listQuizSent = Quiz.findAllBySent(true, [sort:"name"])
+		listQuizSent
 	}
 	
 	def send(Long id){
@@ -181,10 +189,7 @@ class QuizController {
 				generateQuizForUsers(quiz, teamUser?.user)
 			}
 		}
-		
-		def listQuizToSend = Quiz.findAllBySent(false)
-		def listQuizSent = Quiz.findAllBySent(true)
-		render view:'manage', model:[listQuizToSend:listQuizToSend, listQuizSent:listQuizSent]
+		render view:'manage', model:[listQuizToSend:showNotSentQuizzes(), listQuizSent:showSentQuizzes()]
 	}
 	
 	def generateQuizForUsers(Quiz quiz, User user){
@@ -217,5 +222,10 @@ class QuizController {
 			userQuestionOption.user = user
 			userQuestionOption.save flush:true
 		}
+	}
+	
+	def showDetailedQuiz(Quiz quiz){
+//		flash.messageError = message(code:'quizDetails.list.userQuiz.empty.message')
+		render view:'detailed', model:[quiz: quiz]
 	}
 }
