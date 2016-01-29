@@ -210,16 +210,19 @@ class QuizController {
 		 userQuestion.question = question
 		 userQuestion.user = user
 		 
-		 userQuestion.save flush:true
+		 if(userQuestion.save(flush:true)){
+			 buildAlternatives(question?.listOptions, userQuestion)
+		 }
 	}
 	
-	def buildAlternatives(def choices, UserQuestion userQuestion, User user){
+	def buildAlternatives(def choices, UserQuestion userQuestion){
 		for(Choice choice in choices){
 			UserQuestionOption userQuestionOption = new UserQuestionOption()
 			
-			userQuestionOption.properties = choice
+			userQuestionOption.questionText = choice?.text
 			userQuestionOption.userQuestion = userQuestion
-			userQuestionOption.user = user
+			userQuestionOption.user = userQuestion?.user
+			userQuestionOption.questionOption = choice
 			userQuestionOption.save flush:true
 		}
 	}
