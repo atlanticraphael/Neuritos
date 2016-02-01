@@ -33,7 +33,7 @@
 					            </form>
               				</fieldset>
             			</div>
-            			<div class="align-center orange"><g:message code="login.needAnAccount.label"/>&nbsp;<a href="${createLink(uri: '/user/create')}"><g:message code="login.signUp.label"/></a></div>
+            		<%-- <div class="align-center orange"><g:message code="login.needAnAccount.label"/>&nbsp;<a href="${createLink(uri: '/user/create')}"><g:message code="login.signUp.label"/></a></div> --%>
           			</div>
         		</div>
       		</div>

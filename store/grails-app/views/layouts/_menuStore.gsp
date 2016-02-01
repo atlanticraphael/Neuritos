@@ -28,12 +28,12 @@
 			<div class="navbar-btn-group btn-group navbar-left no-margin-l-xs">
 
 				<!-- Menu Search  -->
-				<g:render template="/layouts/menu/menuSearch" /> 
+				<%-- <g:render template="/layouts/menu/menuSearch" /> --%> 
 				<!-- /Menu Search -->
 				
 
 				<!-- Shopping Cart  -->
-				<g:render template="/layouts/menu/menuCart" /> 
+				<%-- <g:render template="/layouts/menu/menuCart" /> --%> 
 				<!-- /Shopping Cart -->
 
 			</div>
@@ -53,6 +53,7 @@
 						<i class="ti ti-home"></i>
 					</a>
 				</li>
+				<%-- 
 				<li class="dropdown mega">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><g:message code="menu.pages.label"/><i class="fa fa-angle-down toggler"></i>
 					</a> <!-- Mega Menu -->
@@ -92,10 +93,12 @@
 						<!-- /Row -->
 					</div> <!-- /Mega Menu -->
 				</li>
+				--%>
 				<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_ACCOUNT_MANAGER">
 					<li class="no-line">
 						<a href="${createLink(uri: '/contentConverter/createConverter')}"><g:message code="menu.converter.label"/></a>
 					</li>
+					<%--
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Quiz<i class="fa fa-angle-down toggler"></i></a>
 						<ul class="dropdown-menu">
@@ -107,6 +110,7 @@
 							<li><a href="${createLink(uri: '/quiz/manage')}"><g:message code="menu.manageQuiz.label"/></a></li>
 						</ul>
 					</li>
+					--%>
 					<li class="no-line">
 					</li>
 				</sec:ifAnyGranted>

@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" class="style-1">
-  <head>
-    <meta charset="utf-8">
-    <meta name="layout" content="main">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Home</title>
-
-  </head>
-
-  <body class="page-bg preload">
+ 	<head>
+    	<meta charset="utf-8">
+    	<meta name="layout" content="main">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+		<title><g:message code="default.welcome.label"/></title>
+ 	</head>
+  	<body class="page-bg preload">
   
     <!-- Page Wrapper
     ++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -40,6 +37,19 @@
                   <div class="slide">
                       <!-- Content -->
                       <div class="text">
+                      	<h1 class="bx-layer" data-anim="bounceInDown" data-dur="1000" data-delay="100"><span class="pcolor"><g:message code="home.intro.slider.converter.label"/></span><br/><g:message code="home.intro.slider.content.label"/></h1>
+                        <p class="bx-layer" data-anim="bounceInLeft" data-dur="1000" data-delay="500"><g:message code="home.intro.slider.converter.information.label"/></p>
+                        <a class="bx-layer btn btn-primary btn-intro block-xs" data-anim="bounceInUp" data-dur="1000" data-delay="1000"><g:message code="default.button.learnMore.label"/></a>
+                      </div>
+                      <!-- /Content -->
+                      <asset:image class="img-main" src="screen-5.png" />
+                  </div>
+                  <!-- /Slide -->
+                  
+                  <!-- Slide -->
+                  <div class="slide">
+                      <!-- Content -->
+                      <div class="text">
                       
                         <h1 class="bx-layer" data-anim="bounceInDown" data-dur="1000" data-delay="100"><span class="pcolor"><g:message code="home.neuritos.label"/></span><br/><g:message code="home.newsletter.label"/></h1>
                         <p class="bx-layer" data-anim="bounceInLeft" data-dur="1000" data-delay="500"><g:message code="home.signUp.label"/></p>
@@ -61,26 +71,6 @@
                       </div>
                       <!-- /Content -->
                       <asset:image class="img-main" src="bman1.png"/>
-                  </div>
-                  <!-- /Slide -->
-                  
-                  <!-- Slide -->
-                  <div class="slide">
-                    <!-- vcenter -->
-                    <div class="vcenter">
-                      <!-- Content -->
-                      <div class="vcenter-this">
-                        
-                        <h1 class="bx-layer" data-anim="bounceInDown" data-dur="1000" data-delay="100"><span class="pcolor">Converta</span><br/>conteúdos</h1>
-                        <p class="bx-layer" data-anim="bounceInLeft" data-dur="1000" data-delay="500">5 diferentes formatos para converter</p>
-                        <a class="bx-layer btn btn-primary btn-intro block-xs" data-anim="bounceInUp" data-dur="1000" data-delay="1000">learn more</a>
-                      
-                      </div>
-                      <!-- /Content -->
-                    </div>
-                    <!-- /vcenter -->
-                    <asset:image class="img-main" src="screen-5.png" />
-                    <img  style="" alt=""/>
                   </div>
                   <!-- /Slide -->
                   
@@ -140,10 +130,10 @@
                 <div class="vcenter-this">
                   <!-- Pager -->
                   <div id="intro-pager" class="tab-pager">
-                    <a data-slide-index="0" href="#"><i class="icon fa  fa-apple"></i><span>Neuritos Newsletter</span></a>
-                    <a data-slide-index="1" href="#"><i class="icon ti ti-music-alt"></i><span>Conversor de Conteúdo</span></a>
-                    <a data-slide-index="2" href="#"><i class="icon ti ti-tablet"></i><span>portable uikit</span></a>
-                    <a data-slide-index="3" href="#"><i class="icon ti ti-stats-up"></i><span>free updates</span></a>
+					<a data-slide-index="0" href="#"><i class="icon ti ti-music-alt"></i><span><g:message code="home.intro.pager.converter.label"/></span></a>
+<%--                <a data-slide-index="1" href="#"><i class="icon fa  fa-apple"></i><span>Neuritos Newsletter</span></a> --%>
+<%--                <a data-slide-index="2" href="#"><i class="icon ti ti-tablet"></i><span>portable uikit</span></a> --%>
+<%--                <a data-slide-index="3" href="#"><i class="icon ti ti-stats-up"></i><span>free updates</span></a> --%>
                   </div>
                   <!-- /Pager -->
                 </div>
@@ -170,7 +160,7 @@
           <!-- Section Title -->
           <div class="section-title">
             <h2><g:message code="home.ourServices.label"/></h2>
-            <p>We are experts in both desktop and mobile design.</p>
+            <p><g:message code="home.ourServices.guidance.message"/></p>
           </div>
           <!-- /Section Title -->
           
@@ -182,15 +172,16 @@
               <!-- hfeat -->
               <div class="hfeat hfeat-md">
                 <i class="icon fa fa-user"></i>
-                <a class="title">conversor</a>
-                <p class="text">Conversor de conteudo PDF, HTML, SCORM e MP4</p>
-                <g:link controller="contentConverter" action="createConverter" class="more-link">Ir para<i class="icon-right ti ti-arrow-right"></i></g:link>
+                <a class="title"><g:message code="home.converter.label"/></a>
+                <p class="text"><g:message code="home.converter.guidance.message"/></p>
+                <g:link controller="contentConverter" action="createConverter" class="more-link"><g:message code="default.goTo.label"/><i class="icon-right ti ti-arrow-right"></i></g:link>
               </div>
               <!-- /hfeat -->
             </div>
             <!-- /Col -->
             
             <!-- Col -->
+            <%--
             <div class="col-sm-6 col-md-4">
               <!-- hfeat -->
               <div class="hfeat hfeat-md">
@@ -254,7 +245,7 @@
               <!-- /hfeat -->
             </div>
             <!-- /Col -->
-          
+			--%>          	
           </div>
           <!-- /Row -->
         
@@ -266,6 +257,7 @@
       
       <!-- Tab Slider
       ================================================== -->
+     <%--
       <section id="work" class="content-block tab-slider tab-layout">
       
         <!-- Container (for alignment)-->
@@ -482,11 +474,13 @@
         </div>
         
       </section>
+      --%>
       <!-- /Tab Slider
       ================================================== -->
       
       <!-- Content Block
       ============================================-->
+      <%--
       <section class="content-block default-bg bshadow-top">
       
         <!-- Container -->
@@ -566,6 +560,7 @@
         </div>
         <!-- /Container -->
       </section>
+      --%>
       <!-- /Content Block
       ============================================-->
     
@@ -574,8 +569,9 @@
       <footer class="footer-block">
       
         <!-- Container -->
+<%--
         <div class="container main clearfix">
-        
+       
           <!-- Brand -->
           <div class="brand-col">
             <div class="brand">
@@ -639,25 +635,12 @@
            <!-- /Row -->
           </div>
           <!-- /Links -->
-
+	
         </div>
         <!-- /Container ->
-        
+--%>      
         <!-- Bottom -->
-        <div class="bottom bshadow-top">
-          <!-- Container -->
-          <div class="container">
-            <span class="copy-text">&copy; 2015 Your Corporation. Theme by <a href="#">Rahisi</a> Themes.</span>
-            <ul class="payment-methods clearfix">
-              <li><asset:image alt="card" src="cards/visa.png"/></li>
-              <li><asset:image alt="card" src="cards/paypal.png"/></li>
-              <li><asset:image alt="card" src="cards/mastercard.png"/></li>
-              <li><asset:image alt="card" src="cards/cirrus.png"/></li>
-              <li><asset:image alt="card" src="cards/visa-debit.png"/></li>
-            </ul>
-          </div>
-          <!-- /Container -->
-        </div>
+		<g:render template="/layouts/footer" /> 
         <!-- /Bottom -->
         
         
@@ -668,5 +651,5 @@
     </div>
     <!-- /Page Wrapper
     ++++++++++++++++++++++++++++++++++++++++++++++ -->
-  </body>
+</body>
 </html>

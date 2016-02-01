@@ -265,20 +265,7 @@
     
         
         <!-- Bottom -->
-        <div class="bottom bshadow-top">
-          <!-- Container -->
-          <div class="container">
-            <span class="copy-text">&copy; 2015 Your Corporation. Theme by <a href="#">Rahisi</a> Themes.</span>
-            <ul class="payment-methods clearfix">
-              <li><asset:image alt="card" src="cards/visa.png"/></li>
-              <li><asset:image alt="card" src="cards/paypal.png"/></li>
-              <li><asset:image alt="card" src="cards/mastercard.png"/></li>
-              <li><asset:image alt="card" src="cards/cirrus.png"/></li>
-              <li><asset:image alt="card" src="cards/visa-debit.png"/></li>
-            </ul>
-          </div>
-          <!-- /Container -->
-        </div>
+        <g:render template="/layouts/footer" /> 
         <!-- /Bottom -->
         
       <!-- /Footer

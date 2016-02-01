@@ -67,7 +67,7 @@
 									</div>
 									<div class="title">
 										<a class="name" href="#">${conversion?.content?.name}</a>
-										<p class="description">${conversion?.dateCreationRequest}</p>
+										<p class="description"><g:formatDate date="${conversion?.dateCreationRequest}" format="dd/MM/yyyy HH:mm:ss"/></p>
 									</div>
 									<div class="links">
 										<span class="price">&#36;0</span>
@@ -101,12 +101,14 @@
 	
 		<footer class="footer-block">
 			<div class="container main clearfix">
+	         	<%--
 	         	<div class="brand-col">
 	            	<div class="brand">
 	              		<asset:image src="logo-footer.png" alt="logo"/>
 	            	</div>
 	          	</div>
 	          	<div class="links-col">
+	            	
 	            	<div class="row-fluid">
 	              		<div class="col-xs-6 col-sm-3 col-md-3">
 	                		<h5>guest</h5>
@@ -145,20 +147,11 @@
 	                		</form>
 	              		</div>
 	           		</div>
+	           		
 		      	</div>
+		      	--%>
 	        </div>
-	        <div class="bottom bshadow-top">
-	        	<div class="container">
-	            	<span class="copy-text">&copy; 2015 Your Corporation. Theme by <a href="#">Rahisi</a> Themes.</span>
-	            	<ul class="payment-methods clearfix">
-	              		<li><asset:image alt="card" src="cards/visa.png"/></li>
-	              		<li><asset:image alt="card" src="cards/paypal.png"/></li>
-	              		<li><asset:image alt="card" src="cards/mastercard.png"/></li>
-	              		<li><asset:image alt="card" src="cards/cirrus.png"/></li>
-	              		<li><asset:image alt="card" src="cards/visa-debit.png"/></li>
-	            	</ul>
-	          	</div>
-	        </div>
+        <g:render template="/layouts/footer" /> 
 		</footer>
     </div>
     <asset:javascript src="contentConverter/contentConverter.js" charset="utf-8"/>
