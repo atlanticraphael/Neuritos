@@ -18,5 +18,6 @@ class HeaderController {
 	
 	def homePage(){
 		render  view:'/index'
+		println
 	}
 }
